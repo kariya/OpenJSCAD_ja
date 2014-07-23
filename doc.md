@@ -1,11 +1,12 @@
 **OpenJSCAD.org Version 0.017 (2013/04/25) - Note: This Is Work In Progress**
+**訳注：日本語訳 2014/07/23- **
 
 ## イントロダクション
 ようこそ、**OpenJSCAD.org User & Programming Guide** へ。. 
 <img src="https://raw.github.com/Spiritdude/OpenJSCAD.org/master/doc/drawing-02.png" align=right>
 
 文脈を理解してもらうための説明ですが、
-**OpenJSCAD.org** は [OpenJsCad (Github)](http://joostn.github.com/OpenJsCad/) 上に構築され、これ自身は [OpenSCAD.org](http://openscad.org) に触発され、本質的には3Dモデルを開発する**JavaScript**を使ったプログラマー的取り組み方を提供し、特にこの強化は3Dプリンティングのためのモデル作成に調整されています。
+**OpenJSCAD.org** は [OpenJsCad (Github)](http://joostn.github.com/OpenJsCad/) 上に構築され、これ自身は [OpenSCAD.org](http://openscad.org) に触発されたもので、本質的には3Dモデルを開発する**JavaScript**を使ったプログラマー的取り組み方を提供し、特にこの強化は3D印刷のためのモデル作成用に調整されています。
 
 
 **OpenJSCAD** は非常にオブジェクト指向的で、 **OpenSCAD** から来たプログラマーは以下のことに歓迎の意を表すかもしれません。
@@ -18,19 +19,19 @@
 
 ### WEBブラウザー (オンライン、ローカルとオフライン)
 
-**[OpenJSCAD.org](http://openjscad.org)** にはユーザーのためのエディタが含まれます：
+**[OpenJSCAD.org](http://openjscad.org)** には利用者のためのエディターが含まれます：
 
 <img src="https://raw.github.com/Spiritdude/OpenJSCAD.org/master/doc/sshot-01.png" width=600>
 
-エディタ内で
-* 組み込みのエディタを使ってオンラインで編集できます
-* 好みのエディタを使ってオフラインで編集できます(.jscadファイルをブラウザーで示された領域にドラッグアンドドロップするだけです(Chrome & Firefox)。フォルダーでも可能です(Chromeのみ)。 Auto Reload [x] がチェックされていることを確認下さい。).
+エディター内で
+* 組み込みのエディターを使ってオンラインで編集できます
+* 好みのエディターを使ってオフラインで編集できます(.jscadファイルをブラウザーで示された領域にドラッグアンドドロップするだけです(Chrome & Firefox)。フォルダーでも可能です(Chromeのみ)。 Auto Reload [x] がチェックされていることを確認して下さい。)
 
 <img src="https://raw.github.com/Spiritdude/OpenJSCAD.org/master/doc/sshot-05-illu.png" width=600>
 
 <img src="https://raw.github.com/Spiritdude/OpenJSCAD.org/master/doc/sshot-06-illu.png" width=600>
 
-**注意:** 現段階では **Google Chrome** と **Firefox** をサポートしています (WebGLが必須), Opera と IE10 が後に続くかもしれません。
+**注意:** 現段階では **Google Chrome** と **Firefox** をサポートしています (WebGLが必須)が、 Opera と IE10 が後に続くかもしれません。
 
 ### ローカルインストール (オフライン)
 
@@ -148,7 +149,7 @@ function main() {
 
 <img src="https://raw.github.com/Spiritdude/OpenJSCAD.org/master/doc/illu/primitives.png">
 
-すべての丸められたソリッドは'fn' すなわち 'resolution'パラメーターを平面充填を制御するために持ちます。もし分解度が８に設定されると、周期の３６０度あたり８つのポリゴンが使われます。分解度を増やすとレンダリング時間が劇的に増加することに注意して下さい。球の場合、ポリゴン数は使用する分解度の二次関数的に増加します。もし分解度パラメーターが省略されると、CSG.defaultResolution2D と CSG.defaultResolution3Dという２つの大域デフォルト値が使われます：前者は2D曲線（円、円柱）で、後者は３D曲線（球、3D展開）です。
+すべての丸められたソリッドは'fn' すなわち '分解度'パラメーターを平面充填を制御するために持ちます。もし分解度が８に設定されると、周期の３６０度あたり８つのポリゴンが使われます。分解度を増やすとレンダリング時間が劇的に増加することに注意して下さい。球の場合、ポリゴン数は使用する分解度の二次関数的に増加します。もし分解度パラメーターが省略されると、CSG.defaultResolution2D と CSG.defaultResolution3Dという２つの大域デフォルト値が使われます：前者は2D曲線（円、円柱）で、後者は３D曲線（球、3D展開）です。
 
 ###立方体
 <img src="https://raw.github.com/Spiritdude/OpenJSCAD.org/master/doc/illu/cube.png">
@@ -353,7 +354,7 @@ cube().center(true);                // object oriented center all axis
 cube().center([true,false,true]);   // object oriented center axis-wise [x,y,z]
 </pre>
 
-false = 何もしない, true = 軸にセンタリング
+false = 何もしない、 true = 軸にセンタリング
 
 
 center() や .center() は左右対称で構築時には完全にはサイズがわからない物体を構成するのに役に立ちます。例えばパラメータ化されたデザインでのように。
@@ -395,7 +396,7 @@ var cube5 = cube.mirrored(plane);
 <pre>
 union(sphere({r: 1, center:true}),cube({size: 1.5, center:true}));  // openscad like
 </pre>
-multiple objects can be added, also arrays.
+複数のオブジェクトの和を取ることができます。配列も可能です。
 <pre>
 sphere({r: 1, center:true}).union(cube({size: 1.5, center:true}));  // object-oriented
 </pre>
@@ -407,7 +408,7 @@ sphere({r: 1, center:true}).union(cube({size: 1.5, center:true}));  // object-or
 <pre>
 intersection(sphere({r: 1, center:true}),cube({size: 1.5, center:true})); // openscad like
 </pre>
-multiple objects can be intersected, also arrays.
+複数のオブジェクトの積を取ることができます。配列も可能です。
 <pre>
 sphere({r: 1, center:true}).intersect(cube({size: 1.5, center:true}));   // object-oriented
 </pre>
@@ -420,11 +421,11 @@ sphere({r: 1, center:true}).intersect(cube({size: 1.5, center:true}));   // obje
 <pre>
 difference(sphere({r: 1, center:true}),cube({size: 1.5, center:true}));    // openscad like
 </pre>
-multiple objects can be differentiated (subtracted) from the first element, also arrays.
+複数のオブジェクトの差分（減算）を取ることができます。配列も可能です。
 <pre>
 sphere({r: 1, center:true}).subtract(cube({size: 1.5, center:true}));      // object-oriented
 </pre>
-**Note:** difference() (openscad と同様) と substract() との対比(メソッド、オブジェクト指向)
+**注意:** difference() (openscad と同様) と substract() との対比(メソッド、オブジェクト指向)
 
 ## 2Dプリミティブ
 
@@ -477,7 +478,7 @@ scape = shape.center([true,false]);  // center axis-wise [x,y]
 
 ## 2Dパス
 
-パスとは単なる点の列で、直線で結合されているものです。パスは開放することも、閉じる（追加の直線が最初と最後の点の間に描かれる）こともできます。2DパスはCSG.Path2Dクラスを通してサポートされます。2Dパスと2D CAGとの違いは、パスが「細い」直線なのに対し、CAGは囲まれた領域であることです。
+パスとは単なる点の列で、直線で結合されているものです。パスは開放することも、閉じる（追加の直線が最初と最後の点の間に描かれます）こともできます。2DパスはCSG.Path2Dクラスを通してサポートされます。2Dパスと2D CAGとの違いは、パスが「細い」直線なのに対し、CAGは囲まれた領域であることです。
 
 パスは2D座標の列を与えたり、CSG.Path2D.arc()関数を通じたりして構築できます。後者は環状のカーブしたパスを構築します。パスは結合でき、結果は新しいパスになります。
 
@@ -507,9 +508,9 @@ var curvedpath = CSG.Path2D.arc({
 </pre>
 
 
-## ハル（Hull）
+## 凸包
 
-複数の２Dポリゴン（例えば circle()やsquare()、polygon()）を合わせて凸状のハルにすることができます：
+複数の２Dポリゴン（例えば circle()やsquare()、polygon()）を合わせて凸包にすることができます：
 
 
 <img src="https://raw.github.com/Spiritdude/OpenJSCAD.org/master/doc/illu/hull.png">
@@ -520,9 +521,9 @@ var h = hull( square(10),circle(10).translate([10,10,0]) );
 linear_extrude({ height: 10 }, h);
 </pre>
 
-## 連鎖ハル（Chain Hull）
+## 連鎖凸包
 
-連鎖したハルとは、複数の２Dの形の上のハルの変種です。本質的に順次ハルにしそれらの和集合を取ります。<a href="https://plus.google.com/u/0/105535247347788377245/posts/aZGXKFX1ACN">Whosa whatsis</a>のアイデアにもとづきます:
+連鎖した凸包とは、複数の２Dの形の上の凸包の変種です。本質的に順次凸包にして、それらの和集合を取ります。<a href="https://plus.google.com/u/0/105535247347788377245/posts/aZGXKFX1ACN">Whosa whatsis</a>のアイデアにもとづきます:
 
 <img src="https://raw.github.com/Spiritdude/OpenJSCAD.org/master/doc/illu/chain_hull.png">
 
@@ -555,7 +556,7 @@ linear_extrude({ height: 10, center: true, twist: 360, slices: 50}, translate([2
 linear_extrude({ height: 10, center: true, twist: 360, slices: 50}, square([1,2]).translate([2,0,0]) );
 </pre>
 
-2D形状の線形押し出しにはオプションでねじりを指定できます。2D形状はz=0平面上に配置され、CSG.Vector3Dの&lt;offset&gt; 方向に押し出されます。最終のフェースは<twistangle>度だけ回転します。回転は2D形状の原点(つまりx=0, y=0)周りになされ、twiststepはねじり（１以上でなければならない）の分解度を決定します。CSGオブジェクトを返します。
+2D形状の線形押し出しにはオプションでねじりを指定できます。2D形状はz=0平面上に配置され、CSG.Vector3Dの&lt;offset&gt; 方向に押し出されます。最終の表面は&lt;twistangle&gt;度だけ回転します。回転は2D形状の原点(つまりx=0, y=0)周りになされ、twiststepはねじり（１以上でなければならない）の分解度を決定します。CSGオブジェクトを返します。
 <pre>
 // object-oriented
 var c = CAG.circle({radius: 3});
@@ -616,7 +617,7 @@ solidFromSlices() は数個のポリゴンからソリッドを作成するこ�
 
 solidFromSlices() は CSG.Polygon インスタンスと静的メソッド CSG.fromSlices で定義されます。どちらのメソッドも与えられたオプションからソリッドを生成します。
 
-* @parameter {Object} options ソリッドを生成するスライスを提供します。各スライスは３D空間の凸ポリゴンです。凸であるという制限の必要性はこれから評価される予定です。適切な結果のためスライスは同じ向きでなければいけません。つまりその法線感のなす角度はは１８０度未満でなければいけません。
+* @parameter {Object} options ソリッドを生成するスライスを提供します。各スライスは３D空間の凸ポリゴンです。凸であるという制限の必要性はこれから評価される予定です。適切な結果のためスライスは同じ向きでなければいけません。つまりその法線間のなす角度は１８０度未満でなければいけません。
 * numslices {Number} - 生成されるスライスの個数。２以上でなければいけません。最初と最後のスライスは底面と最上面として使われます。
 * callback {Function} - 関数(t, sliceN)はスライスを生成します。２つの引数を受け取ります： t - [0..1]、 ここで０は底面に、１は最上面に対応します。 sliceN - [0..numslices-1] 現在のスライス数。 コールバックはCSG.Polygonの文脈で呼び出されます。したがってスライスは初期ポリゴンからそれを変換することで生成可能です。 "<a href="https://github.com/Spiritdude/OpenJSCAD.org/blob/master/examples/slices/tor.jscad">Tor (multi-color)</a>" の例を参照して下さい.
 * loop {Boolean} - 真なら底面と最上面は生成されずソリッドはループになります。"<a href="https://github.com/Spiritdude/OpenJSCAD.org/blob/master/examples/slices/tor.jscad">Tor (multi-color)</a>" の例を再び参照して下さい。
@@ -665,9 +666,9 @@ function main(params) {
 }
 </pre>
 ## 膨張と収縮
-膨張はオブジェクトと球とのの３D畳み込みとみなすことができます。収縮はその逆です：ソリッドの外部領域は拡大され、これはその後ソリッドから減算されます。
+膨張はオブジェクトと球との３D畳み込みとみなすことができます。収縮はその逆です：ソリッドの外部領域は拡大され、これはその後ソリッドから減算されます。
 
-膨張と収縮は、オブジェクトになめらかな角を持たせる非常に強力な手法です。例えば丸められた立方体は通常の立方体を膨張させることで生成可能です。
+膨張と収縮は、オブジェクトに滑らかな隅を持たせる非常に強力な手法です。例えば丸められた立方体は通常の立方体を膨張させることで生成可能です。
 
 これらはコストのかかる操作であることに注意して下さい：球状体は元となるオブジェクトの全ての角と端を丸めて作られるので、ポリゴン数はすぐに増大します。膨張と収縮はしたがって単純な、カーブのないオブジェクトに対してのみ現実的です。
 
@@ -721,7 +722,7 @@ cube.properties.myProperties.someProperty = new CSG.Vector3D([-1, -1, -1]);
 </pre>
 
 ## コネクター
-CSG.Connectorクラスの目的は、２つのソリッドと互いに前もって決められて位置と方向で結合するのを容易にすることです。例えばサーボモーターを描いたCSGソリッドとサーボアームのソリッドがあるとしましょう：それぞれのコネクタープロパティーを定義することで、容易にサーボアームをサーボモーターに正しい位置（つまりモーター軸）と向き（つまり軸に垂直）で取り付けることができます。たとえ３D空間上の現在の位置と向きを知らなくても。
+CSG.Connectorクラスの目的は、２つのソリッドと互いに前もって決められた位置と方向で結合するのを容易にすることです。例えばサーボモーターを描いたCSGソリッドとサーボアームのソリッドがあるとしましょう：それぞれのコネクタープロパティーを定義することで、容易にサーボアームをサーボモーターに正しい位置（つまりモーター軸）と向き（つまり軸に垂直）で取り付けることができます。たとえ３D空間上の現在の位置と向きを知らなくても。
 
 言い換えればコネクターは自在にオブジェクトを回転・移動することを、その位置と境界を追跡することなしに可能にします。そしてサードパーティーのライブラリーがそのソリッドにコネクターを公開すれば、ライブラリーの利用者は実際の寸法や形状を知る必要がなく、ただコネクターのプロパティーの名前さえ知っていればいいのです。
 
@@ -773,10 +774,10 @@ cube2 = cube2.transform(matrix);
 var result = cube2.union(cube1);
 </pre>
 
-## 境界と平面敷設
+## 境界と平面配置
 getBound()関数を使ってオブジェクトのバウンディングボックスを取得できます。getBounds()は２つのCSG.Vector3Dからなる配列を返します。それぞれが最小のx,y,z座標と最大のx,y,z座標を示します。
 
-lieFlat()はオブジェクトをz=0表面上に配置します。その際、z-高さが最小になり、z軸周りにセンタリングされるように処理されます。これはCNCミルでは有用です：オブジェクトの一部を切削中の原材料の空間に変換するからです。または３Dプリンタでも同様です：最小の層数で印刷できるからです。lieFLat()の代わりにgetTransformationToFlatLying()関数も使えます。これは変換としてCSG.Matrix4x4を返します。
+lieFlat()はオブジェクトをz=0平面上に配置します。その際、z-高さが最小になり、z軸周りにセンタリングされるように処理されます。これはCNCミルで有用です：オブジェクトの一部を切削中の原材料の空間に変換するからです。または３Dプリンタでも同様です：最小の層数で印刷できるからです。lieFLat()の代わりにgetTransformationToFlatLying()関数も使えます。これは変換としてCSG.Matrix4x4を返します。
 
 <pre>
 var cube1 = CSG.cube({radius: 10});
@@ -837,7 +838,7 @@ sphere().setColor([1,0.5,0.3]);
 
 <img src="https://raw.github.com/Spiritdude/OpenJSCAD.org/master/doc/illu/colors.png">
 
-コード引用:
+コード抜粋:
 <pre>
 o.push( color([1,0,0],sphere()) );
 o.push( color([0,1,0],cube()) );
@@ -906,7 +907,7 @@ a=1, b=2
 
 
 ## 数学関数
-次のOpenSCAD互換関数が利用可能です。JavaScriptのMath.xyz()はさておき。
+次のOpenSCAD互換関数が利用可能です。JavaScriptのMath.xyz()は脇へ置いておきます。
 <pre>
 sin(a);                   // a = 0..360
 cos(a);                   //     ''
@@ -933,7 +934,7 @@ round(a);
 
 ## OpenSCADソースの直接取込
 
-OpenSCAD (.scad)トランスレーター・インポーターがOpenJSCADには含まれます。次の機能はまだ動きません：
+OpenSCAD (.scad)翻訳器・取り込み器がOpenJSCADには含まれます。次の機能はまだ動きません：
 * DXF の取込と操作 (例 import_dxf, dxf-cross, dxf_dim functions)
 * rotate_extrude() (<b>注意:</b> OpenJSCAD は rotate_extrude() をサポートします)
 * minkowski() と hull() 変換 (<b>注意:</b> OpenJSCAD は hull() をサポートします)
@@ -1279,7 +1280,7 @@ include()の再帰的用法については<a href="https://github.com/Spiritdude
 
 ##include()のサポート
 
-**include()** は以下の場合サポートされる
+**include()** は以下の場合サポートされます
 * **web-online remote** (e.g. http://openjscad.org/): ファイルがドラッグアンドドロップされた場合、またはWEBサーバー上で利用可能な場合(例 the examples)
 * **web-online local** (e.g. http://localhost/OpenJSCAD/): ファイルがドラッグアンドドロップされた場合、またはローカルWEBサーバー上で利用可能な場合
 * **web-offline local** (e.g. file://..../OpenJSCAD/index.html): ファイルがドラッグアンドドロップされた場合
@@ -1299,11 +1300,11 @@ ProjectName/
    Makefile            # possible Makefile to do the same on CLI                  
 </pre>
 
-**注意:** **main.jscad** はデフォルトファイルなので実行されるが、"function main()" 宣言を含む必要があります。
+**注意:** **main.jscad** はデフォルトファイルなので実行されますが、"function main()" 宣言を含む必要があります。
 
 ##複数の JSCAD ファイルの開発
 
-ブラウザーとローカルのセットアップ次第ですが、以下が適用されるます：
+ブラウザーとローカルのセットアップ次第ですが、以下が適用されます：
 
 * **Chrome (Version 26+)**:
  * Online (http://...): フォルダー全体、例えば ProjectName/ をドラッグアンドドロップ領域にドラッグアンドドロップする
