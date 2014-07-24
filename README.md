@@ -1,6 +1,8 @@
 This is a Japanese translation of one of OpenJSCAD documents.
 
-solid�̖�ꂪ�悭�킩��Ȃ������̂Łu�\���b�h�v�Ƃ��Ă��܂��B���g�̋l�܂������̂̂��Ƃł��B
+solidの訳語がよくわからなかったので「ソリッド」としています。中身の詰まった立体のことです。（追記：一般的な用語のようです）
 
-�T���v���R�[�h���̃R�����g���͖󂵂Ă��܂���B����K�v�ɉ����ď����󂵂Ă��܂��B
+サンプルコード中のコメント文は訳していません。今後必要に応じて順次訳してきます。
+
+object はJavascriptのオブジェクトの意味と物体の意味で使われているようですが、物体もJavaScriptのオブジェクトなので誤解のおそれがない場合、「オブジェクト」で統一しています。
 
