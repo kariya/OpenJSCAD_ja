@@ -19030,8 +19030,24 @@ var data = [
 "  (17.16, 0.00, 6.00)"
 ].join("\n");
 
+function getNormal(line) {
+	var m = line.match(/^Polygon plane: \[normal: \(([^,]*), ([^,]*), ([^,]*)\), w: .*\]$/);
+	
+	var x = parseFloat(m[1]);
+	var y = parseFloat(m[2]);
+	var z = parseFloat(m[3]);
+	
+	return new CSG.Vector3D(x, y, z);
+}
+
+function getW(line) {
+	var m = line.match(/^Polygon plane: \[normal: \(.*\), w: (.*)\]$/);
+	
+	return parseFloat(m[1]);
+}
+
 function getPoint(line) {
-	var m = line.match(/^ *\(([^,]*),([^,]*),([^,]*)\)$/);
+	var m = line.match(/^ *\(([^,]*), ([^,]*), ([^,]*)\)$/);
 
 	var x = parseFloat(m[1]);
 	var y = parseFloat(m[2]);
@@ -19045,7 +19061,7 @@ function parseSolid(data) {
 	lines.push("END");
 	
 	var result = [];
-	var buf = [];
+	var buf = { points:[] };
 
 	var first = true;
 	
@@ -19059,12 +19075,17 @@ function parseSolid(data) {
 		}
 		
 		if (line.match(/^Polygon plane:|^END/)) {
-			if (buf.length != 0) result.push(new CSG.Polygon(buf));
-			buf = [];
+			if (buf.points.length != 0) result.push(new CSG.Polygon(buf.points, null, new CSG.Plane(buf.normal, buf.w)));
+			if (line != "END") {
+				buf = {};
+				buf.normal = getNormal(line);
+				buf.w = getW(line);
+				buf.points = [];
+			}
 			continue;
 		}
 
-		buf.push(getPoint(line));
+		buf.points.push(getPoint(line));
 	}
 	
 	return CSG.fromPolygons(result);
