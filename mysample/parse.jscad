@@ -1,3 +1,5 @@
+// exprerimental implementation to parse back a cached data to solid
+
 var data = [
 "CSG solid:",
 "Polygon plane: [normal: (1.00, 0.09, 0.00), w: 9.46384963187158]",
@@ -19037,11 +19039,6 @@ function getPoint(line) {
 
 	return new CSG.Vertex(new CSG.Vector3D(x, y, z));
 }
-
-function toPolygon(buf) {
-	return 
-}
-
 
 function parseSolid(data) {
 	var lines = data.split("\n");
