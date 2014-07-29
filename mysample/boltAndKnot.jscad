@@ -67,10 +67,10 @@ function knot(params, num) {
 function main()
 {
 	 var params = {
-		P: 1*2,
-		D: 9.5*2,
-		D1: 8.5*2,
-		D2: 9*2
+		P: 1*2,    //pitch
+		D: 9.5*2,  // major diameter
+		D1: 8.5*2, // moinor daimeter
+		D2: 9*2    // picth diameter
 	};
 	params.H = params.P / 2 * Math.sqrt(3);
 
