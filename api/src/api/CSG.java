@@ -218,26 +218,217 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	//public CAG sectionCut(? orthobasis) {return null;}
 	public CSG fixTJunctions() {return null;}
 
+	/**
+	 *EN Parse an option from the options object
+	 *EN If the option is not present, return the default value
+	 *JP オプションオブジェクトからのオプションを解析する
+	 *JP オプションが存在しない場合、デフォルト値を返す
+	 */
 	public static Object parseOption(Object options, String optionname, Object defaultvalue) {return null;}
+	/**
+	 *EN Parse an option and force into a CSG.Vector3D. If a scalar is passed it is converted
+	 *EN into a vector with equal x,y,z
+	 *JP オプションを解析してCSG.Vector3Dに強制的に変換する。スカラー値が渡された場合、同じ値のx,y,zからなるベクトルに変換される。
+	 */
 	public static Vector3D parseOptionAs3DVector(Object options, String optionname, Object defaultvalue) {return null;}
+	/**
+	 *EN Parse an option and force into a CSG.Vector2D. If a scalar is passed it is converted
+	 *EN into a vector with equal x,y
+	 *JP オプションを解析してCSG.Vector2Dに強制的に変換する。スカラー値が渡された場合、同じ値のx,yからなるベクトルに変換される。
+	 */
 	public static Vector2D parseOptionAs2DVector(Object options, String optionname, Object defaultvalue) {return null;}
 	public static double parseOptionAsFloat(Object options, String optionname, Object defaultvalue) {return 0;}
 	public static int parseOptionAsInt(Object options, String optionname, Object defaultvalue) {return 0;}
 	public static boolean parseOptionAsBool(Object options, String optionname, Object defaultvalue) {return false;}
+	/**
+	 *EN Construct an axis-aligned solid cuboid.
+	 *EN @param center: center of cube (default [0,0,0])
+	 *EN @param radius: radius of cube (default [1,1,1]), can be specified as scalar or as 3D vector
+	 *EN Example code:
+	 *EN <pre>
+	 *EN     var cube = CSG.cube({
+	 *EN       center: [0, 0, 0],
+	 *EN       radius: 1
+	 *EN     });
+	 *EN </pre>
+	 *JP 軸に沿ったソリッドの立方体を構成する。
+	 *JP @param cJPter: 立方体の中心(デフォルト [0,0,0])
+	 *JP @param radius: 立方体の範囲(デフォルト [1,1,1])、 スカラー値でも３Dエクトルでも指定可能
+	 *JP コード例:
+	 *JP <pre>
+	 *JP     var cube = CSG.cube({
+	 *JP       center: [0, 0, 0],
+	 *JP       radius: 1
+	 *JP     });
+	 *JP </pre>
+	 */
 	public static CSG cube(Object option) {return null;}
+	/**
+	 *EN Construct a solid sphere
+	 *EN @param center: center of sphere (default [0,0,0])
+	 *EN @param radius: radius of sphere (default 1), must be a scalar
+	 *EN @param resolution: determines the number of polygons per 360 degree revolution (default 12)
+	 *EN @param axes: (optional) an array with 3 vectors for the x, y and z base vectors
+	 *EN Example usage:
+	 *EN <pre>
+	 *EN     var sphere = CSG.sphere({
+	 *EN       center: [0, 0, 0],
+	 *EN       radius: 2,
+	 *EN       resolution: 32,
+	 *EN     });
+	 *EN </pre>
+	 *JP ソリッドの球を構成します。
+	 *JP @param center: 級の中心(デフォルト [0,0,0])
+	 *JP @param radius: 級の半径(デフォルト 1), スカラー値でなければいけない
+	 *JP @param resolution: 360度周期あたりのポリゴンの数を決定する(デフォルト 12)
+	 *JP @param axes: (省略可能) x,y,zの３つの基底ベクトルからなる配列
+	 *JP 使用例:
+	 *JP <pre>
+	 *JP     var sphere = CSG.sphere({
+	 *JP       center: [0, 0, 0],
+	 *JP       radius: 2,
+	 *JP       resolution: 32,
+	 *JP     });
+	 *JP </pre>
+	 */
 	public static CSG sphere(Object option) {return null;}
+	/**
+	 *EN Construct a solid cylinder.
+	 *EN @param start: start point of cylinder (default [0, -1, 0])
+	 *EN @param end: end point of cylinder (default [0, 1, 0])
+	 *EN @param radius: radius of cylinder (default 1), must be a scalar
+	 *EN @param resolution: determines the number of polygons per 360 degree revolution (default 12)
+	 *EN Example usage:
+	 *EN <pre>
+	 *EN     var cylinder = CSG.cylinder({
+	 *EN       start: [0, -1, 0],
+	 *EN       end: [0, 1, 0],
+	 *EN       radius: 1,
+	 *EN       resolution: 16
+	 *EN     });	 *
+	 *EN </pre>
+	 *JP ソリッドの円柱を構成する。
+	 *JP @param start: 円柱の開始点(デフォルト [0, -1, 0])
+	 *JP @param end: 円柱の終了点(デフォルト [0, 1, 0])
+	 *JP @param radius: 円柱の半径(デフォルト 1)、スカラー値でなければならない
+	 *JP @param resolution: 360度周期あたりのポリゴンの数を決定する(デフォルト 12)
+	 *JP 使用例:
+	 *JP <pre>
+	 *JP     var cylinder = CSG.cylinder({
+	 *JP       start: [0, -1, 0],
+	 *JP       end: [0, 1, 0],
+	 *JP       radius: 1,
+	 *JP       resolution: 16
+	 *JP     });
+	 *JP </pre>
+	 */
 	public static CSG cylinder(Object option) {return null;}
+	/**
+	 *EN Like a cylinder, but with rounded ends instead of flat
+	 *EN @param start: start point of cylinder (default [0, -1, 0])
+	 *EN @param end: end point of cylinder (default [0, 1, 0])
+	 *EN @param radius: radius of cylinder (default 1), must be a scalar
+	 *EN @param resolution: determines the number of polygons per 360 degree revolution (default 12)
+	 *EN @param normal: a vector determining the starting angle for tesselation. Should be non-parallel to start.minus(end)
+	 *EN Example usage:
+	 *EN <pre>
+	 *EN     var cylinder = CSG.roundedCylinder({
+	 *EN       start: [0, -1, 0],
+	 *EN       end: [0, 1, 0],
+	 *EN       radius: 1,
+	 *EN       resolution: 16
+	 *EN     });
+	 *EN </pre>
+	 *JP 円柱同様だが、端が平坦ではなく丸められる
+	 *JP @param start: 円柱の開始点(デフォルト [0, -1, 0])
+	 *JP @param end: 円柱の終了点(デフォルト [0, 1, 0])
+	 *JP @param radius: 円柱の半径(デフォルト 1)、スカラー値でなければならない
+	 *JP @param resolution: 360度周期あたりのポリゴンの数を決定する(デフォルト 12)
+	 *JP @param normal: 平面充填のための開始角を決定するベクトル。start.minus(end)と平行でないこと。
+	 *JP 使用例:
+	 *JP <pre>
+	 *JP     var cylinder = CSG.roundedCylinder({
+	 *JP       start: [0, -1, 0],
+	 *JP       end: [0, 1, 0],
+	 *JP       radius: 1,
+	 *JP       resolution: 16
+	 *JP     });
+	 *JP </pre>
+	 */
 	public static CSG roundedCylinder(Object option) {return null;}
+	/**
+	 *EN Construct an axis-aligned solid rounded cuboid.
+	 *EN @param center: center of cube (default [0,0,0])
+	 *EN @param radius: radius of cube (default [1,1,1]), can be specified as scalar or as 3D vector
+	 *EN @param roundradius: radius of rounded corners (default 0.2), must be a scalar
+	 *EN @param resolution: determines the number of polygons per 360 degree revolution (default 8)
+	 *EN Example code:
+	 *EN <pre>
+	 *EN     var cube = CSG.roundedCube({
+	 *EN       center: [0, 0, 0],
+	 *EN       radius: 1,
+	 *EN       roundradius: 0.2,
+	 *EN       resolution: 8,
+	 *EN     });
+	 *EN </pre>
+	 *JP 軸に沿ったソリッドの丸められた立方体を構成する。
+	 *JP @param center: 立方体の中心(デフォルト [0,0,0])
+	 *JP @param radius: 立方体の範囲(デフォルト [1,1,1])、スカラー値と3Dベクトルが指定可能
+	 *JP @param roundradius: 丸められた隅の半径(デフォルト 0.2)、スカラー値でなければならない
+	 *JP @param resolution: 360度周期あたりのポリゴンの数を決定する(デフォルト 8)
+	 *JP コード例:
+	 *JP <pre>
+	 *JP     var cube = CSG.roundedCube({
+	 *JP       center: [0, 0, 0],
+	 *JP       radius: 1,
+	 *JP       roundradius: 0.2,
+	 *JP       resolution: 8,
+	 *JP     });
+	 *JP </pre>
+	 */
 	public static CSG roundedCube(Object option) {return null;}
 	public static CSG IsFloat(Object n) {return null;}
+	/**
+	 *EN solve 2x2 linear equation:
+	 **EN <pre>
+	 *EN [ab][x] = [u]
+	 *EN [cd][y]   [v]
+	 *EN </pre>
+	 *JP ２ｘ２の一次方程式を解く：
+	 *JP <pre>
+	 *JP [ab][x] = [u]
+	 *JP [cd][y]   [v]
+	 *JP </pre>
+	 */
 	public static double[] solve2Linear(double a, double b, double c, double d, double u, double v) {return null;}
 
+	/**
+	 *EN Represents a 3D vector.
+	 *EN Example usage:
+	 *EN <pre>
+	 *EN     new CSG.Vector3D(1, 2, 3);
+	 *EN     new CSG.Vector3D([1, 2, 3]);
+	 *EN     new CSG.Vector3D({ x: 1, y: 2, z: 3 });
+	 *EN     new CSG.Vector3D(1, 2); // assumes z=0
+	 *EN     new CSG.Vector3D([1, 2]); // assumes z=0
+	 *EN </pre>
+	 *JP ３Dベクトルを表す。
+	 *JP 使用例:
+	 *JP <pre>
+	 *JP     new CSG.Vector3D(1, 2, 3);
+	 *JP     new CSG.Vector3D([1, 2, 3]);
+	 *JP     new CSG.Vector3D({ x: 1, y: 2, z: 3 });
+	 *JP     new CSG.Vector3D(1, 2); // z=0を仮定
+	 *JP     new CSG.Vector3D([1, 2]); // z=0を仮定
+	 *JP </pre>
+	 */
 	public static class Vector3D extends AddTransformationMethodsToPrototype {
 		public Vector3D(double x, double y, double z) {}
 		public Vector3D(double x, double y) {}
 		public Vector3D(double[] pos) {}
 		public Vector3D(Vector3D pos) {}
 		public Vector3D(Vector2D pos) {}
+		public Vector3D(Object pos) {}
 
 		public double get_x() {return 0;}
 		public double get_y() {return 0;}
@@ -261,33 +452,93 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 		public double distanceTo(Vector3D a) {return 0;}
 		public double distanceToSquared(Vector3D a) {return 0;}
 		public boolean equals(Vector3D a) {return false;}
+		/**
+		 *EN Right multiply by a 4x4 matrix (the vector is interpreted as a row vector)
+		 *EN Returns a new CSG.Vector3D
+		 *JP 4x4行列による右からの乗算(ベクトルは行ベクトルと解釈される)
+		 *JP 新しいCSG.Vector3Dを返す
+		 */
 		public Vector3D multiply4x4(Matrix4x4 matrix4x4) {return null;}
 		public Vector3D transform(Matrix4x4 matrix4x4) {return null;}
 		public String toAMFString() {return null;}
 		public String toString() {return null;}
+		/**
+		 * EN find a vector that is somewhat perpendicular to this one
+		 * JP 本ベクトルに何かしら垂直なベクトルを見つける
+		 */
 		public Vector3D randomNonParallelVector() {return null;}
 		public Vector3D min() {return null;}
 		public Vector3D max() {return null;}
 	}
 
+	/**
+	 *EN Represents a vertex of a polygon. Use your own vertex class instead of this
+	 *EN one to provide additional features like texture coordinates and vertex
+	 *EN colors. Custom vertex classes need to provide a `pos` property
+	 *EN `flipped()`, and `interpolate()` methods that behave analogous to the ones
+	 *EN defined by `CSG.Vertex`.
+	 *JP ポリゴンの頂点を表す。テクスチャ座標や頂点の色のような追加の機能を提供するには本クラスのかわりにユーザー独自の頂点クラスを使うこと。
+	 *JP カスタム頂点クラスは`CSG.Vertex`で定義されるのと同様に振る舞う`pos`プロパティーと{flipped()`と`interpolate`メソッドを提供する必要がある。
+	 */
 	public static class Vertex extends AddTransformationMethodsToPrototype {
 		public Vertex(Object obj) {}
 
+		/**
+		 *EN create from an untyped object with identical property names:
+		 *JP 同一のプロパティー名を持つ型付けられていないオブジェクトから作成する：
+		 */
+		public static Vertex fromObject(Object obj) {return null;}
+
+		/**
+		 *EN Return a vertex with all orientation-specific data (e.g. vertex normal) flipped. Called when the
+		 *EN orientation of a polygon is flipped.
+		 *JP 向きを指定する（頂点の法線）をすべて反転した頂点を返す。ポリゴンの向きを反転するときに呼ばれる。
+		 */
 		public Vertex flipped() {return null;}
 		public int getTag() {return 0;}
+		/**
+		 *EN Create a new vertex between this vertex and `other` by linearly
+		 *EN interpolating all properties using a parameter of `t`. Subclasses should
+		 *EN override this to interpolate additional properties.
+		 *JP 本頂点と`other`の間をパラメーター`t`を使って全てのプロパティーを線形補間して新しい頂点を作成する。
+		 *JP サブクラスは追加のプロパティーを補間するためこのメソッドをオーバーライドすること。
+		 */
 		public Vertex interpolate(Vertex other, double t) {return null;}
+		/**
+		 *EN Affine transformation of vertex. Returns a new CSG.Vertex
+		 *JP 頂点のアフィン変換。新しいCSG.Vertexを返す。
+		 */
 		public Vertex transform(Matrix4x4 matrix4x4) {return null;}
 		public String toStlString() {return null;}
 		public String toAMFString() {return null;}
 		public String toString() {return null;}
 	}
 
+	/**
+	 *EN Represents a plane in 3D space.
+	 *JP 3D空間上の平面を表す。
+	 */
 	public static class Plane extends AddTransformationMethodsToPrototype {
 		public Plane(Vector3D normal, double w) {}
 
+		/**
+		 *EN create from an untyped object with identical property names:
+		 *JP 同一のプロパティー名を持つ型付けられていないオブジェクトから作成する：
+		 */
 		public static Plane fromObject(Object obj) {return null;}
+		/**
+		 *EN `CSG.Plane.EPSILON` is the tolerance used by `splitPolygon()` to decide if a
+		 *EN point is on the plane.
+		 *JP `CSG.Plane.EPSILON`は点が平面上にあるかを決定する`splitPolygon()`が使う許容度である。
+		 */
 		public static double EPSILON;
 		public static Plane fromVector3Ds(Vector3D a, Vector3D b, Vector3D c)  {return null;}
+		/**
+		 *EN like fromVector3Ds, but allow the vectors to be on one point or one line
+		 *EN in such a case a random plane through the given points is constructed
+		 *JP fromVector3D同様だが、ベクトルが同一点か同一直線上にあることを許す。
+		 *JP その場合、与えられた点を通るランダムな平面が作成される。
+		 */
 		public static Plane anyPlaneFromVector3Ds(Vector3D a, Vector3D b, Vector3D c)  {return null;}
 		public static Plane fromPoints(double[] a, double[] b, double[] c) {return null;}
 		public static Plane fromPoints(Vector3D a, Vector3D b, Vector3D c) {return null;}
@@ -300,10 +551,48 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 		public int getTag() {return 0;}
 		public boolean equals() {return false;}
 		public Plane transform(Matrix4x4 matrix4x4) {return null;}
+		/**
+		 *EN Returns object:
+		 *EN .type:
+		 *EN   0: coplanar-front
+		 *EN   1: coplanar-back
+		 *EN   2: front
+		 *EN   3: back
+		 *EN   4: spanning
+		 *EN In case the polygon is spanning, returns:
+		 *EN .front: a CSG.Polygon of the front part
+		 *EN .back: a CSG.Polygon of the back part
+		 *JP Returns object:
+		 *JP .type:
+		 *JP   0: 共角-front
+		 *JP   1: 共角r-back
+		 *JP   2: front
+		 *JP   3: back
+		 *JP   4: spanning
+		 *JP ポリゴンがspanningな場合、以下を返す:
+		 *JP .front: a CSG.Polygon of the front part
+		 *JP .back: a CSG.Polygon of the back part
+		 */
 		public Object splitPolygon(Polygon polygon) {return null;}
-		//public ? splitLineBetweenPoints(? p1, ? p2) {return null;}
+		/**
+		 *EN robust splitting of a line by a plane
+		 *EN will work even if the line is parallel to the plane
+		 *JP 平面による直線の堅牢な分割
+		 *JP 直線が平面と平行な場合でも機能する
+		 * @param p2
+		 * @return
+		 */
+		public Vector3D splitLineBetweenPoints(Vector3D p1, Vector3D p2) {return null;}
+		/**
+		 *EN returns CSG.Vector3D
+		 *JP CSG.Vector3Dを返す
+		 */
 		public Vector3D intersectWithLine(Line3D line3d) {return null;}
-		//public ? intersectWithPlane(Plane plane) {return null;}
+		/**
+		 *EN intersection of two planes
+		 *JP ２つの平面の交差
+		 */
+		public Line3D intersectWithPlane(Plane plane) {return null;}
 		public double signedDistanceToPoint(Vector3D point) {return 0;}
 		public String toString() {return null;}
 		public Vector3D mirrorPoint(Vector3D point3d) {return null;}
