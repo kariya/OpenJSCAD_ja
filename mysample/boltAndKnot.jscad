@@ -1,3 +1,5 @@
+// bolt and knot generator
+
 function bolt(params, num) {
     var thread = CSG.Polygon.createFromPoints([
 		[(params.D2-params.H)/2 + (params.H-params.D2+params.D1)/2,	 (params.H+params.D2-params.D1)/4, 0],
@@ -69,7 +71,7 @@ function main()
 	 var params = {
 		P: 1*2,    //pitch
 		D: 9.5*2,  // major diameter
-		D1: 8.5*2, // moinor daimeter
+		D1: 8.5*2, // minor daimeter
 		D2: 9*2    // picth diameter
 	};
 	params.H = params.P / 2 * Math.sqrt(3);
