@@ -4,8 +4,8 @@ package api;
 /**
  *EN Holds a binary space partition tree representing a 3D solid.
  *EN Two solids can be combined using the `union()`, `subtract()`, and `intersect()` methods.
- *JP 3Dƒ\ƒŠƒbƒh‚ğ•\Œ»‚·‚é‚Q•ª‹óŠÔ•ªŠ„–Ø‚ğ•Û‚·‚éB
- *JP ‚Q‚Â‚Ìƒ\ƒŠƒbƒh‚Í`union()`‚â`subtract()`A`intersect()`ƒƒ\ƒbƒh‚ÅŒ‹‡‚Å‚«‚éB
+ *JP 3Dã‚½ãƒªãƒƒãƒ‰ã‚’è¡¨ç¾ã™ã‚‹ï¼’åˆ†ç©ºé–“åˆ†å‰²æœ¨ã‚’ä¿æŒã™ã‚‹ã€‚
+ *JP ï¼’ã¤ã®ã‚½ãƒªãƒƒãƒ‰ã¯`union()`ã‚„`subtract()`ã€`intersect()`ãƒ¡ã‚½ãƒƒãƒ‰ã§çµåˆã§ãã‚‹ã€‚
  */
 public abstract class CSG extends AddTransformationMethodsToPrototype {
 	public CSG() {}
@@ -20,24 +20,24 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 
 	/**
 	 *EN Construct a CSG solid from a list of `CSG.Polygon` instances.
-	 *JP  `CSG.Polygon`ƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒŠƒXƒg‚©‚çCSGƒ\ƒŠƒbƒh‚ğ\¬‚·‚éB
+	 *JP  `CSG.Polygon`ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒªã‚¹ãƒˆã‹ã‚‰CSGã‚½ãƒªãƒƒãƒ‰ã‚’æ§‹æˆã™ã‚‹ã€‚
 	 */
 	public static CSG fromPolygons(Polygon[] polygons) {return null;}
 	/**
 	 *EN Construct a CSG solid from generated slices.
 	 *EN Look at CSG.Polygon.prototype.solidFromSlices for details
-	 *JP ¶¬‚³‚ê‚½ƒXƒ‰ƒCƒX‚©‚çCSGƒ\ƒŠƒbƒh‚ğ\¬‚·‚éB
-	 *JP Ú×‚ÍCSG.Polygon.prototype.solidFromSlices‚ğQÆB
+	 *JP ç”Ÿæˆã•ã‚ŒãŸã‚¹ãƒ©ã‚¤ã‚¹ã‹ã‚‰CSGã‚½ãƒªãƒƒãƒ‰ã‚’æ§‹æˆã™ã‚‹ã€‚
+	 *JP è©³ç´°ã¯CSG.Polygon.prototype.solidFromSlicesã‚’å‚ç…§ã€‚
 	 */
 	public static CSG fromSlices(Object options) {return null;}
 	/**
 	 *EN create from an untyped object with identical property names:
-	 *JP “¯ˆê‚ÌƒvƒƒpƒeƒB–¼‚ğ‚ÂŒ^•t‚¯‚³‚ê‚Ä‚¢‚È‚¢ƒIƒuƒWƒFƒNƒg‚©‚çì¬‚·‚é
+	 *JP åŒä¸€ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’æŒã¤å‹ä»˜ã‘ã•ã‚Œã¦ã„ãªã„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ä½œæˆã™ã‚‹
 	 */
 	public static CSG fromObject(Object obj) {return null;}
 	/**
 	 *EN Reconstruct a CSG from the output of toCompactBinary()
-	 *JP toCompactBinary()‚Ìo—Í‚©‚çCSG‚ğÄ\¬‚·‚éB
+	 *JP toCompactBinary()ã®å‡ºåŠ›ã‹ã‚‰CSGã‚’å†æ§‹æˆã™ã‚‹ã€‚
 	 */
 	public static CSG fromCompactBinary(Object bin) {return null;}
 
@@ -45,64 +45,64 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	/**
 	 *EN Return a new CSG solid representing space in either this solid or in the
 	 *EN solid `csg`. Neither this solid nor the solid `csg` are modified.
-	 *JP –{ƒ\ƒŠƒbƒh‚Ü‚½‚Íƒ\ƒŠƒbƒh`csg`‚Ì‚Ç‚¿‚ç‚©‚ÉŠÜ‚Ü‚ê‚é‹óŠÔ‚ğ•\‚·V‚µ‚¢CSGƒ\ƒŠƒbƒh‚ğ•Ô‚·B
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã¾ãŸã¯ã‚½ãƒªãƒƒãƒ‰`csg`ã®ã©ã¡ã‚‰ã‹ã«å«ã¾ã‚Œã‚‹ç©ºé–“ã‚’è¡¨ã™æ–°ã—ã„CSGã‚½ãƒªãƒƒãƒ‰ã‚’è¿”ã™ã€‚
 	 */
 	public CSG union(CSG csg) {return null;}
 	/**
 	 *EN Return a new CSG solid representing space in either this solid or in the
 	 *EN solid `csg`. Neither this solid nor the solid `csg` are modified.
-	 *JP –{ƒ\ƒŠƒbƒh‚Ü‚½‚Íƒ\ƒŠƒbƒh`csg`‚Ì‚Ç‚¿‚ç‚©‚ÉŠÜ‚Ü‚ê‚é‹óŠÔ‚ğ•\‚·V‚µ‚¢CSGƒ\ƒŠƒbƒh‚ğ•Ô‚·B
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã¾ãŸã¯ã‚½ãƒªãƒƒãƒ‰`csg`ã®ã©ã¡ã‚‰ã‹ã«å«ã¾ã‚Œã‚‹ç©ºé–“ã‚’è¡¨ã™æ–°ã—ã„CSGã‚½ãƒªãƒƒãƒ‰ã‚’è¿”ã™ã€‚
 	 */
 	public CSG union(CSG[] csgs) {return null;}
 	public CSG unionSub(CSG csg, boolean retesselate, boolean canonicalize) {return null;}
 	/**
 	 *EN Like union, but when we know that the two solids are not intersecting
 	 *EN Do not use if you are not completely sure that the solids do not intersect!
-	 *JP union“¯—l‚¾‚ªA‚Q‚Â‚Ìƒ\ƒŠƒbƒh‚ªŒğ‚í‚ç‚È‚¢‚±‚Æ‚ª‚í‚©‚Á‚Ä‚¢‚éê‡B
-	 *JP ƒ\ƒŠƒbƒh‚ªŒğ‚í‚ç‚È‚¢‚©Š®‘S‚É‚Í‚í‚©‚ç‚È‚¢‚È‚çg‚í‚È‚¢‚±‚ÆB
+	 *JP unionåŒæ§˜ã ãŒã€ï¼’ã¤ã®ã‚½ãƒªãƒƒãƒ‰ãŒäº¤ã‚ã‚‰ãªã„ã“ã¨ãŒã‚ã‹ã£ã¦ã„ã‚‹å ´åˆã€‚
+	 *JP ã‚½ãƒªãƒƒãƒ‰ãŒäº¤ã‚ã‚‰ãªã„ã‹å®Œå…¨ã«ã¯ã‚ã‹ã‚‰ãªã„ãªã‚‰ä½¿ã‚ãªã„ã“ã¨ã€‚
 	 */
 	public CSG unionForNonIntersecting(CSG csg) {return null;}
 	/**
 	 *EN Return a new CSG solid representing space in this solid but not in the
 	 *EN solid `csg`. Neither this solid nor the solid `csg` are modified.
-	 *JP –{ƒ\ƒŠƒbƒh‚ÉŠÜ‚Ü‚ê‚é‚ªƒ\ƒŠƒbƒh`csg`‚É‚ÍŠÜ‚Ü‚ê‚È‚¢‹óŠÔ‚ğ•\‚·V‚µ‚¢CSGƒ\ƒŠƒbƒh‚ğ•Ô‚·B
-	 *JP –{ƒ\ƒŠƒbƒh‚àƒ\ƒŠƒbƒh`csg`‚à•ÏX‚³‚ê‚È‚¢B
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã«å«ã¾ã‚Œã‚‹ãŒã‚½ãƒªãƒƒãƒ‰`csg`ã«ã¯å«ã¾ã‚Œãªã„ç©ºé–“ã‚’è¡¨ã™æ–°ã—ã„CSGã‚½ãƒªãƒƒãƒ‰ã‚’è¿”ã™ã€‚
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã‚‚ã‚½ãƒªãƒƒãƒ‰`csg`ã‚‚å¤‰æ›´ã•ã‚Œãªã„ã€‚
 	 */
 	public CSG subtract(CSG csg) {return null;}
 	/**
 	 *EN Return a new CSG solid representing space in this solid but not in the
 	 *EN solid `csg`. Neither this solid nor the solid `csg` are modified.
-	 *JP –{ƒ\ƒŠƒbƒh‚ÉŠÜ‚Ü‚ê‚é‚ªƒ\ƒŠƒbƒh`csg`‚É‚ÍŠÜ‚Ü‚ê‚È‚¢‹óŠÔ‚ğ•\‚·V‚µ‚¢CSGƒ\ƒŠƒbƒh‚ğ•Ô‚·B
-	 *JP –{ƒ\ƒŠƒbƒh‚àƒ\ƒŠƒbƒh`csg`‚à•ÏX‚³‚ê‚È‚¢B
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã«å«ã¾ã‚Œã‚‹ãŒã‚½ãƒªãƒƒãƒ‰`csg`ã«ã¯å«ã¾ã‚Œãªã„ç©ºé–“ã‚’è¡¨ã™æ–°ã—ã„CSGã‚½ãƒªãƒƒãƒ‰ã‚’è¿”ã™ã€‚
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã‚‚ã‚½ãƒªãƒƒãƒ‰`csg`ã‚‚å¤‰æ›´ã•ã‚Œãªã„ã€‚
 	 */
 	public CSG subtract(CSG[] csgs) {return null;}
 	public CSG subtractSub(CSG csg, boolean retesselate, boolean canonicalize) {return null;}
 	/**
 	 *EN Return a new CSG solid representing space both this solid and in the
 	 *EN solid `csg`. Neither this solid nor the solid `csg` are modified.
-	 *JP –{ƒ\ƒŠƒbƒh‚É‚àƒ\ƒŠƒbƒh`csg`‚É‚àŠÜ‚Ü‚ê‚é‹óŠÔ‚ğ•\‚·V‚µ‚¢CSGƒ\ƒŠƒbƒh‚ğ•Ô‚·B
-	 *JP –{ƒ\ƒŠƒbƒh‚àƒ\ƒŠƒbƒh`csg`‚à•ÏX‚³‚ê‚È‚¢B
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã«ã‚‚ã‚½ãƒªãƒƒãƒ‰`csg`ã«ã‚‚å«ã¾ã‚Œã‚‹ç©ºé–“ã‚’è¡¨ã™æ–°ã—ã„CSGã‚½ãƒªãƒƒãƒ‰ã‚’è¿”ã™ã€‚
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã‚‚ã‚½ãƒªãƒƒãƒ‰`csg`ã‚‚å¤‰æ›´ã•ã‚Œãªã„ã€‚
 	 */
 	public CSG intersect(CSG csg) {return null;}
 	/**
 	 *EN Return a new CSG solid representing space both this solid and in the
 	 *EN solid `csg`. Neither this solid nor the solid `csg` are modified.
-	 *JP –{ƒ\ƒŠƒbƒh‚É‚àƒ\ƒŠƒbƒh`csg`‚É‚àŠÜ‚Ü‚ê‚é‹óŠÔ‚ğ•\‚·V‚µ‚¢CSGƒ\ƒŠƒbƒh‚ğ•Ô‚·B
-	 *JP –{ƒ\ƒŠƒbƒh‚àƒ\ƒŠƒbƒh`csg`‚à•ÏX‚³‚ê‚È‚¢B
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã«ã‚‚ã‚½ãƒªãƒƒãƒ‰`csg`ã«ã‚‚å«ã¾ã‚Œã‚‹ç©ºé–“ã‚’è¡¨ã™æ–°ã—ã„CSGã‚½ãƒªãƒƒãƒ‰ã‚’è¿”ã™ã€‚
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã‚‚ã‚½ãƒªãƒƒãƒ‰`csg`ã‚‚å¤‰æ›´ã•ã‚Œãªã„ã€‚
 	 */
 	public CSG intersect(CSG[] csg) {return null;}
 	public CSG intersectSub(CSG csg, boolean retesselate, boolean canonicalize) {return null;}
 	/**
 	 *EN Return a new CSG solid with solid and empty space switched. This solid is
 	 *EN not modified.
-	 *JP ƒ\ƒŠƒbƒh‚Æ‹ó‚Ì‹óŠÔ‚ğ“ü‚ê‘Ö‚¦‚½V‚µ‚¢CSGƒ\ƒŠƒbƒh‚ğ•Ô‚·B
-	 *JP –{ƒ\ƒŠƒbƒh‚Í•ÏX‚³‚ê‚È‚¢B
+	 *JP ã‚½ãƒªãƒƒãƒ‰ã¨ç©ºã®ç©ºé–“ã‚’å…¥ã‚Œæ›¿ãˆãŸæ–°ã—ã„CSGã‚½ãƒªãƒƒãƒ‰ã‚’è¿”ã™ã€‚
+	 *JP æœ¬ã‚½ãƒªãƒƒãƒ‰ã¯å¤‰æ›´ã•ã‚Œãªã„ã€‚
 	 * @return
 	 */
 	public CSG inverse() {return null;}
 	/**
 	 *EN Affine transformation of CSG object. Returns a new CSG object
-	 *JP CSGƒIƒuƒWƒFƒNƒg‚ğƒAƒtƒBƒ“•ÏŠ·‚·‚éB‚ ‚½‚ç‚µ‚¢CSGƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·B
+	 *JP CSGã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¢ãƒ•ã‚£ãƒ³å¤‰æ›ã™ã‚‹ã€‚ã‚ãŸã‚‰ã—ã„CSGã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™ã€‚
 	 */
 	public CSG transform1(Matrix4x4 matrix4x4) {return null;}
 	public CSG transform(Matrix4x4 matrix4x4) {return null;}
@@ -121,15 +121,15 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	/**
 	 *EN Expand the solid
 	 *EN @param resolution: number of points per 360 degree for the rounded corners
-	 *JP ƒ\ƒŠƒbƒh‚ğ–c’£‚³‚¹‚éB
-	 *JP @param resolution: ŠÛ‚ß‚ç‚ê‚½‹÷‚É‚Â‚¢‚Ä‚R‚U‚O“x‚ ‚½‚è‚Ì“_‚Ì”
+	 *JP ã‚½ãƒªãƒƒãƒ‰ã‚’è†¨å¼µã•ã›ã‚‹ã€‚
+	 *JP @param resolution: ä¸¸ã‚ã‚‰ã‚ŒãŸéš…ã«ã¤ã„ã¦ï¼“ï¼–ï¼åº¦ã‚ãŸã‚Šã®ç‚¹ã®æ•°
 	 */
 	public CSG expand(double radius, int resolution) {return null;}
 	/**
 	 *EN Contract the solid
 	 *EN @param resolution: number of points per 360 degree for the rounded corners
-	 *JP ƒ\ƒŠƒbƒh‚ğûk‚³‚¹‚éB
-	 *JP @param resolution: ŠÛ‚ß‚ç‚ê‚½‹÷‚É‚Â‚¢‚Ä‚R‚U‚O“x‚ ‚½‚è‚Ì“_‚Ì”
+	 *JP ã‚½ãƒªãƒƒãƒ‰ã‚’åç¸®ã•ã›ã‚‹ã€‚
+	 *JP @param resolution: ä¸¸ã‚ã‚‰ã‚ŒãŸéš…ã«ã¤ã„ã¦ï¼“ï¼–ï¼åº¦ã‚ãŸã‚Šã®ç‚¹ã®æ•°
 	 */
 	public CSG contract(double radius, int resolution) {return null;}
 	/**
@@ -140,32 +140,32 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	 *EN @rama unionWithThis: if true, the resulting solid will be united with 'this' solid;
 	 *EN the result is a true expansion of the solid
 	 *EN If false, returns only the shell
-	 *JP ƒ\ƒŠƒbƒh‚Ì–c’£‚³‚ê‚½ŠOŠk‚ğì¬‚·‚éF
-	 *JP ‚·‚×‚Ä‚Ì–Ê‚Í2*radius‚ÌŒú‚³‚Å‰Ÿ‚µo‚³‚ê‚é
-	 *JP ‰~’Œ‚Í‘S‚Ä‚Ì‘¤–Ê‚Ü‚í‚è‚É\¬‚³‚ê‚é
-	 *JP ‹…‚ª‚·‚×‚Ä‚Ì’¸“_‚É”z’u‚³‚ê‚é
-	 *JP @prama unionWithThis: ^‚È‚çŒ‹‰Ê‚Ìƒ\ƒŠƒbƒh‚Í–{ƒ\ƒŠƒbƒh‚ÆŒ‹‡‚³‚ê‚éF
-	 *JP Œ‹‰Ê‚Íƒ\ƒŠƒbƒh‚Ì–{“–‚Ì–c’£‚É‚È‚é
-	 *JP ‹U‚È‚çŠOŠk‚Ì‚İ‚ª•Ô‚³‚ê‚é
+	 *JP ã‚½ãƒªãƒƒãƒ‰ã®è†¨å¼µã•ã‚ŒãŸå¤–æ®»ã‚’ä½œæˆã™ã‚‹ï¼š
+	 *JP ã™ã¹ã¦ã®é¢ã¯2*radiusã®åšã•ã§æŠ¼ã—å‡ºã•ã‚Œã‚‹
+	 *JP å††æŸ±ã¯å…¨ã¦ã®å´é¢ã¾ã‚ã‚Šã«æ§‹æˆã•ã‚Œã‚‹
+	 *JP çƒãŒã™ã¹ã¦ã®é ‚ç‚¹ã«é…ç½®ã•ã‚Œã‚‹
+	 *JP @prama unionWithThis: çœŸãªã‚‰çµæœã®ã‚½ãƒªãƒƒãƒ‰ã¯æœ¬ã‚½ãƒªãƒƒãƒ‰ã¨çµåˆã•ã‚Œã‚‹ï¼š
+	 *JP çµæœã¯ã‚½ãƒªãƒƒãƒ‰ã®æœ¬å½“ã®è†¨å¼µã«ãªã‚‹
+	 *JP å½ãªã‚‰å¤–æ®»ã®ã¿ãŒè¿”ã•ã‚Œã‚‹
 	 */
 	public CSG expandedShell(double radius, int resolution, boolean unionWithThis) {return null;}
 	public CSG canonicalized() {return null;}
 	public CSG reTesselated() {return null;}
 	/**
 	 *EN returns an array of two CSG.Vector3Ds (minimum coordinates and maximum coordinates)
-	 *JP ‚Q‚Â‚ÌCSG.Vector3D‚©‚ç‚È‚é”z—ñ‚ğ•Ô‚·iÅ¬À•W‚ÆÅ‘åÀ•Wj
+	 *JP ï¼’ã¤ã®CSG.Vector3Dã‹ã‚‰ãªã‚‹é…åˆ—ã‚’è¿”ã™ï¼ˆæœ€å°åº§æ¨™ã¨æœ€å¤§åº§æ¨™ï¼‰
 	 */
 	public Vector3D[] getBounds() {return null;}
 	/**
 	 *EN returns true if there is a possibility that the two solids overlap
 	 *EN returns false if we can be sure that they do not overlap
-	 *JP ‚Q‚Â‚Ìƒ\ƒŠƒbƒh‚ªd‚È‚é‰Â”\«‚ª‚ ‚ê‚Î^‚ğ•Ô‚·
-	 *JP Œˆ‚µ‚Äd‚È‚ç‚È‚¢‚È‚ç‹U‚ğ•Ô‚·
+	 *JP ï¼’ã¤ã®ã‚½ãƒªãƒƒãƒ‰ãŒé‡ãªã‚‹å¯èƒ½æ€§ãŒã‚ã‚Œã°çœŸã‚’è¿”ã™
+	 *JP æ±ºã—ã¦é‡ãªã‚‰ãªã„ãªã‚‰å½ã‚’è¿”ã™
 	 */
 	public boolean mayOverlap(CSG csg) {return false;}
 	/**
 	 *EN Cut the solid by a plane. Returns the solid on the back side of the plane
-	 *JP ƒ\ƒŠƒbƒh‚ğ•½–Ê‚ÅØ’f‚·‚éB•Ğ–Ê‚Ì— ‘¤‚Ìƒ\ƒŠƒbƒh‚ğ•Ô‚·B
+	 *JP ã‚½ãƒªãƒƒãƒ‰ã‚’å¹³é¢ã§åˆ‡æ–­ã™ã‚‹ã€‚ç‰‡é¢ã®è£å´ã®ã‚½ãƒªãƒƒãƒ‰ã‚’è¿”ã™ã€‚
 	 */
 	public CSG cutByPlane(Plane plane) {return null;}
 	/**
@@ -176,41 +176,41 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	 *EN         true: the 'axis' vectors of the connectors should point in opposite direction
 	 *EN @param normalrotation: degrees of rotation between the 'normal' vectors of the two
 	 *EN                 connectors
-	 *JP ƒ\ƒŠƒbƒh‚ğ•Ê‚Ìƒ\ƒŠƒbƒh‚ÆŒ‹‡‚µA‚Q‚Â‚ÌCSG.Connector‚ªŒ‹‡Ï‚İ‚É‚È‚é‚æ‚¤‚É‚·‚é
-	 *JP @param myConnector: –{ƒ\ƒŠƒbƒh‚ÌCSG.Connector
-	 *JP @param otherConnector: myConnector‚ªŒ‹‡‚³‚ê‚é‘ÎÛ‚ÌCSG.Connector
-	 *JP @param mirror: ‹U‚È‚çƒRƒlƒNƒ^‚Ì`²`ƒxƒNƒgƒ‹‚Í“¯‚¶Œü‚«‚ğw‚·A^‚È‚ç”½‘ÎŒü‚«‚ğw‚·B
-	 *JP @param normalrotation: ‚Q‚Â‚ÌƒRƒlƒNƒ^‚Ì`–@ü`ƒxƒNƒgƒ‹ŠÔ‚Ì‰ñ“]Šp“x
+	 *JP ã‚½ãƒªãƒƒãƒ‰ã‚’åˆ¥ã®ã‚½ãƒªãƒƒãƒ‰ã¨çµåˆã—ã€ï¼’ã¤ã®CSG.ConnectorãŒçµåˆæ¸ˆã¿ã«ãªã‚‹ã‚ˆã†ã«ã™ã‚‹
+	 *JP @param myConnector: æœ¬ã‚½ãƒªãƒƒãƒ‰ã®CSG.Connector
+	 *JP @param otherConnector: myConnectorãŒçµåˆã•ã‚Œã‚‹å¯¾è±¡ã®CSG.Connector
+	 *JP @param mirror: å½ãªã‚‰ã‚³ãƒã‚¯ã‚¿ã®`è»¸`ãƒ™ã‚¯ãƒˆãƒ«ã¯åŒã˜å‘ãã‚’æŒ‡ã™ã€çœŸãªã‚‰åå¯¾å‘ãã‚’æŒ‡ã™ã€‚
+	 *JP @param normalrotation: ï¼’ã¤ã®ã‚³ãƒã‚¯ã‚¿ã®`æ³•ç·š`ãƒ™ã‚¯ãƒˆãƒ«é–“ã®å›è»¢è§’åº¦
 	 */
 	public CSG connectTo(Connector myConnector, Connector otherConnector, boolean mirror, int normalrotation) {return null;}
 	/**
 	 *EN set the .shared property of all polygons
 	 *EN Returns a new CSG solid, the original is unmodified!
-	 *JP ‘S‚Ä‚Ìƒ|ƒŠƒSƒ“‚Ì.sharedƒvƒƒpƒeƒB[‚ğƒZƒbƒg‚·‚é
-	 *JP V‚µ‚¢CSGƒ\ƒŠƒbƒh‚ğ•Ô‚µAŒ³‚Ìƒ\ƒŠƒbƒh‚Í•ÏX‚³‚ê‚È‚¢I
+	 *JP å…¨ã¦ã®ãƒãƒªã‚´ãƒ³ã®.sharedãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ¼ã‚’ã‚»ãƒƒãƒˆã™ã‚‹
+	 *JP æ–°ã—ã„CSGã‚½ãƒªãƒƒãƒ‰ã‚’è¿”ã—ã€å…ƒã®ã‚½ãƒªãƒƒãƒ‰ã¯å¤‰æ›´ã•ã‚Œãªã„ï¼
 	 */
 	public CSG setShared(Polygon.Shared shared) {return null;}
 	/**
 	 *EN @param {Array} color [red, green, blue] color values are float numbers 0..1
 	 *EN @return {CSG} new CSG instance
-	 *JP @param {Array} color [red, green, blue] F‚Ì’l‚Í‚O‚©‚ç‚P‚Ì¬”
-	 *JP @return {CSG} V‚µ‚¢CSGƒCƒ“ƒXƒ^ƒ“ƒX
+	 *JP @param {Array} color [red, green, blue] è‰²ã®å€¤ã¯ï¼ã‹ã‚‰ï¼‘ã®å°æ•°
+	 *JP @return {CSG} æ–°ã—ã„CSGã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	 */
 	public CSG setColor(double red, double green, double blue, double alpha) {return null;}
 	public Object toCompactBinary() {return null;}
 	/**
 	 *EN For debugging
 	 *EN Creates a new solid with a tiny cube at every vertex of the source solid
-	 *JP ƒfƒoƒbƒO—p
-	 *JP Œ³‚Ìƒ\ƒŠƒbƒh‚ÌŠe’¸“_‚É¬‚³‚È—§•û‘Ì‚ğ”z’u‚µ‚½V‚µ‚¢ƒ\ƒŠƒbƒh‚ğì¬‚·‚é
+	 *JP ãƒ‡ãƒãƒƒã‚°ç”¨
+	 *JP å…ƒã®ã‚½ãƒªãƒƒãƒ‰ã®å„é ‚ç‚¹ã«å°ã•ãªç«‹æ–¹ä½“ã‚’é…ç½®ã—ãŸæ–°ã—ã„ã‚½ãƒªãƒƒãƒ‰ã‚’ä½œæˆã™ã‚‹
 	 */
 	public CSG toPointCloud(double cuberadius) {return null;}
 	/**
 	 *EN Get the transformation that transforms this CSG such that it is lying on the z=0 plane,
 	 *EN as flat as possible (i.e. the least z-height).
 	 *EN So that it is in an orientation suitable for CNC milling
-	 *JP CGS‚ğz=0•½–Ê‚É’u‚¢‚Ä‚Å‚«‚é‚¾‚¯•½‚ç‚É‚È‚éiz-‚‚³‚ªÅ¬‚É‚È‚éj‚æ‚¤‚Éƒ\ƒŠƒbƒh‚ğ•ÏŠ·‚·‚é•ÏŠ·s—ñ‚ğ“¾‚éB
-	 *JP Œ‹‰ÊACNCØí‚É“K‚µ‚½Œü‚«‚É‚È‚é
+	 *JP CGSã‚’z=0å¹³é¢ã«ç½®ã„ã¦ã§ãã‚‹ã ã‘å¹³ã‚‰ã«ãªã‚‹ï¼ˆz-é«˜ã•ãŒæœ€å°ã«ãªã‚‹ï¼‰ã‚ˆã†ã«ã‚½ãƒªãƒƒãƒ‰ã‚’å¤‰æ›ã™ã‚‹å¤‰æ›è¡Œåˆ—ã‚’å¾—ã‚‹ã€‚
+	 *JP çµæœã€CNCåˆ‡å‰Šã«é©ã—ãŸå‘ãã«ãªã‚‹
 	 */
 	public Matrix4x4 getTransformationToFlatLying() {return null;}
 	public CSG lieFlat() {return null;}
