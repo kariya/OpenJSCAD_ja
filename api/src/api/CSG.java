@@ -46,12 +46,14 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	 *EN Return a new CSG solid representing space in either this solid or in the
 	 *EN solid `csg`. Neither this solid nor the solid `csg` are modified.
 	 *JP 本ソリッドまたはソリッド`csg`のどちらかに含まれる空間を表す新しいCSGソリッドを返す。
+	 *JP 本ソリッドもソリッド`csg`も変更されない。
 	 */
 	public CSG union(CSG csg) {return null;}
 	/**
 	 *EN Return a new CSG solid representing space in either this solid or in the
 	 *EN solid `csg`. Neither this solid nor the solid `csg` are modified.
 	 *JP 本ソリッドまたはソリッド`csg`のどちらかに含まれる空間を表す新しいCSGソリッドを返す。
+	 *JP 本ソリッドもソリッド`csg`も変更されない。
 	 */
 	public CSG union(CSG[] csgs) {return null;}
 	public CSG unionSub(CSG csg, boolean retesselate, boolean canonicalize) {return null;}
@@ -97,7 +99,6 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	 *EN not modified.
 	 *JP ソリッドと空の空間を入れ替えた新しいCSGソリッドを返す。
 	 *JP 本ソリッドは変更されない。
-	 * @return
 	 */
 	public CSG inverse() {return null;}
 	/**
@@ -108,15 +109,20 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	public CSG transform(Matrix4x4 matrix4x4) {return null;}
 	public String toStlString() {return null;}
 	public String toAMFString() {return null;}
-	//public Blob? toX3D() {return null;}
-	//public Blob? toStlBinary() {return null;}
+
+	public Object /*Blob*/ toX3D() {return null;}
+	/**
+	 *EN @see http://en.wikipedia.org/wiki/STL_%28file_format%29#Binary_STL
+	 *JP @see http://en.wikipedia.org/wiki/STL_%28file_format%29#Binary_STL
+	 */
+	public Object /*Blob*/ toStlBinary() {return null;}
 	/**
 	 *EN @see http://en.wikipedia.org/wiki/STL_%28file_format%29#Binary_STL
 	 *JP @see http://en.wikipedia.org/wiki/STL_%28file_format%29#Binary_STL
 	 */
 	public String toStlBinary() {return null;}
 	public String toString() {return null;}
-	public CSG center(double x, double y, double z) {return null;}
+	public CSG center(double c) {return null;}
 	public CSG center(double[] pos) {return null;}
 	/**
 	 *EN Expand the solid
@@ -165,7 +171,7 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	public boolean mayOverlap(CSG csg) {return false;}
 	/**
 	 *EN Cut the solid by a plane. Returns the solid on the back side of the plane
-	 *JP ソリッドを平面で切断する。片面の裏側のソリッドを返す。
+	 *JP ソリッドを平面で切断する。平面の裏面のソリッドを返す。
 	 */
 	public CSG cutByPlane(Plane plane) {return null;}
 	/**
@@ -214,8 +220,8 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	 */
 	public Matrix4x4 getTransformationToFlatLying() {return null;}
 	public CSG lieFlat() {return null;}
-	//public CAG projectToOrthoNormalBasis(? orthobasis) {return null;}
-	//public CAG sectionCut(? orthobasis) {return null;}
+	public CAG projectToOrthoNormalBasis(OrthoNormalBasis orthobasis) {return null;}
+	public CAG sectionCut(OrthoNormalBasis orthobasis) {return null;}
 	public CSG fixTJunctions() {return null;}
 
 	/**
@@ -252,7 +258,7 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	 *EN     });
 	 *EN </pre>
 	 *JP 軸に沿ったソリッドの立方体を構成する。
-	 *JP @param cJPter: 立方体の中心(デフォルト [0,0,0])
+	 *JP @param center: 立方体の中心(デフォルト [0,0,0])
 	 *JP @param radius: 立方体の範囲(デフォルト [1,1,1])、 スカラー値でも３Dエクトルでも指定可能
 	 *JP コード例:
 	 *JP <pre>
@@ -478,7 +484,7 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	 *EN `flipped()`, and `interpolate()` methods that behave analogous to the ones
 	 *EN defined by `CSG.Vertex`.
 	 *JP ポリゴンの頂点を表す。テクスチャ座標や頂点の色のような追加の機能を提供するには本クラスのかわりにユーザー独自の頂点クラスを使うこと。
-	 *JP カスタム頂点クラスは`CSG.Vertex`で定義されるのと同様に振る舞う`pos`プロパティーと{flipped()`と`interpolate`メソッドを提供する必要がある。
+	 *JP カスタム頂点クラスは`CSG.Vertex`で定義されるのと同様に振る舞う`pos`プロパティーと`flipped()`と`interpolate()`メソッドを提供する必要がある。
 	 */
 	public static class Vertex extends AddTransformationMethodsToPrototype {
 		public Vertex(Object obj) {}
@@ -536,7 +542,7 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 		/**
 		 *EN like fromVector3Ds, but allow the vectors to be on one point or one line
 		 *EN in such a case a random plane through the given points is constructed
-		 *JP fromVector3D同様だが、ベクトルが同一点か同一直線上にあることを許す。
+		 *JP fromVector3Dsと同様だが、ベクトルが同一点か同一直線上にあることを許す。
 		 *JP その場合、与えられた点を通るランダムな平面が作成される。
 		 */
 		public static Plane anyPlaneFromVector3Ds(Vector3D a, Vector3D b, Vector3D c)  {return null;}
@@ -553,25 +559,33 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 		public Plane transform(Matrix4x4 matrix4x4) {return null;}
 		/**
 		 *EN Returns object:
+		 *EN <pre>
 		 *EN .type:
 		 *EN   0: coplanar-front
 		 *EN   1: coplanar-back
 		 *EN   2: front
 		 *EN   3: back
 		 *EN   4: spanning
+		 *EN </pre>
 		 *EN In case the polygon is spanning, returns:
+		 *EN <pre>
 		 *EN .front: a CSG.Polygon of the front part
 		 *EN .back: a CSG.Polygon of the back part
-		 *JP Returns object:
+		 *EN </pre>
+		 *JP 以下のオブジェクトを返す:
+		 *JP <pre>
 		 *JP .type:
-		 *JP   0: 共角-front
-		 *JP   1: 共角r-back
-		 *JP   2: front
-		 *JP   3: back
+		 *JP   0: 共角-前面
+		 *JP   1: 共角-背面
+		 *JP   2: 前面
+		 *JP   3: 背面
 		 *JP   4: spanning
+		 *JP </pre>
 		 *JP ポリゴンがspanningな場合、以下を返す:
-		 *JP .front: a CSG.Polygon of the front part
-		 *JP .back: a CSG.Polygon of the back part
+		 *JP <pre>
+		 *JP .front: 前面のCSG.Polygon
+		 *JP .back: 背面のCSG.Polygon
+		 *JP </pre>
 		 */
 		public Object splitPolygon(Polygon polygon) {return null;}
 		/**
@@ -579,8 +593,6 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 		 *EN will work even if the line is parallel to the plane
 		 *JP 平面による直線の堅牢な分割
 		 *JP 直線が平面と平行な場合でも機能する
-		 * @param p2
-		 * @return
 		 */
 		public Vector3D splitLineBetweenPoints(Vector3D p1, Vector3D p2) {return null;}
 		/**
@@ -598,34 +610,89 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 		public Vector3D mirrorPoint(Vector3D point3d) {return null;}
 	}
 
+	/**
+	 *EN Represents a convex polygon. The vertices used to initialize a polygon must
+	 *EN be coplanar and form a convex loop. They do not have to be `CSG.Vertex`
+	 *EN instances but they must behave similarly (duck typing can be used for
+	 *EN customization).
+	 *EN
+	 *EN Each convex polygon has a `shared` property, which is shared between all
+	 *EN polygons that are clones of each other or were split from the same polygon.
+	 *EN This can be used to define per-polygon properties (such as surface color).
+	 *EN
+	 *EN The plane of the polygon is calculated from the vertex coordinates
+	 *EN To avoid unnecessary recalculation, the plane can alternatively be
+	 *EN passed as the third argument
+	 *JP 凸ポリゴンを表す。ポリゴンを初期化するのに使われる頂点は共角(coplanar)かつ凸なループでなければならない。
+	 *JP それらは`CSG.Vertex`インスタンスである必要はないが、同様に振る舞えなければならない（ダックタイピングがカスタム化のために用いられる）。
+	 *JP 
+	 *JP 各凸ポリゴンは`共有`プロパティーを持つ。それは互いにクローンであるか、同じポリゴンから分割されたかのいずれかのすべてのポリゴン間で共有される。
+	 *JP これは（表面色のような）ポリゴン毎のプロパティーを定義するのに使うことができる。
+	 *JP 
+	 *JP ポリゴンの平面は頂点の座標から計算される。不必要な再計算を避けるため、平面は第３引数として渡すこともできる。
+	 */
 	public static class Polygon extends AddTransformationMethodsToPrototype {
 		public Polygon(Vertex[] vertices, boolean shared, Plane plane) {}
 		public Polygon(Vertex[] vertices, boolean shared) {}
 		public Polygon(Vertex[] vertices) {}
 
+		/**
+		 *EN create from an untyped object with identical property names:
+		 *JP 同一のプロパティー名を持つ型付けられていないオブジェクトから作成する：
+		 */
 		public static Polygon fromObject(Object obj) {return null;}
 
+		/**
+		 *EN check whether the polygon is convex (it should be, otherwise we will get unexpected results)
+		 *JP ポリゴンが凸かをチェックする（そうであるべき、そうでなければ予期しない結果になる）
+		 */
 		public boolean checkIfConvex() {return false;}
+		/**
+		 * @param {Array} 色 [red, green, blue, alpha] 色の値は０から１の小数である
+	 	 * @return {CSG.Polygon} 現在のポリゴン
+	 	 */
 		public Polygon setColor(double red, double green, double blue, double alpha) {return null;}
+		/**
+		 *EN Extrude a polygon into the direction offsetvector
+		 *EN Returns a CSG object
+		 *JP offsetvectorの方向にポリゴンを押し出す
+		 *JP CSGオブジェクトを返す
+		 */
 		public CSG extrude(Vector3D offsetvector) {return null;}
-		//public Polygon translate(? offset) {return null;}
-		//public ? boundingSphere() {return null;}
+		public Polygon translate(Vector3D offset) {return null;}
+		/**
+		 *EN returns an array with a CSG.Vector3D (center point) and a radius
+		 *JP CSG.Vector3D(中心点)と半径からなる配列を返す
+		 */
+		public Object[] boundingSphere() {return null;}
+		/**
+		 *EN returns an array of two CSG.Vector3Ds (minimum coordinates and maximum coordinates)
+		 *JP ２つのCSG.Vector3D(最小座標と最大座標)からなる配列を返す
+		 */
 		public Vector3D[] boundingBox() {return null;}
 		public Polygon flipped() {return null;}
+		/**
+		 *EN Affine transformation of polygon. Returns a new CSG.Polygon
+		 *JP ポリゴンのアフィン変換。新しいCSG.Polygonを返す。
+		 */
 		public Polygon transform(Matrix4x4 matrix4x4) {return null;}
 		public String toStlString() {return null;}
 		public String toString() {return null;}
-		//public projectToOrthoNormalBasis(? orthobasis) {return null;}
+		/**
+		 *EN project the 3D polygon onto a plane
+		 *JP 3Dポリゴンを平面に射影する
+		 */
+		public CAG projectToOrthoNormalBasis(OrthoNormalBasis orthobasis) {return null;}
 		public CSG solidFromSlices(Object options) {return null;}
 		public CSG _addWalls(Polygon[] walls, Polygon bottom, Polygon top, boolean bFlipped) {return null;}
 
-		//public static ? verticesConvex(Vertex[] vertices, ? planenormal) {return null;}
-		//public static ? createFromPoints(double[][] points, boolean shared, Plane plane) {return null;}
-		//public static ? createFromPoints(Vector3D[] points, boolean shared, Plane plane) {return null;}
-		//public static ? createFromPoints(Vector2D[] points, boolean shared, Plane plane) {return null;}
-		//public static ? createFromPoints(double[][] points, boolean shared) {return null;}
-		//public static ? createFromPoints(Vector3D[] points, boolean shared) {return null;}
-		//public static ? createFromPoints(Vector2D[] points, boolean shared) {return null;}
+		public static boolean verticesConvex(Vertex[] vertices, ? planenormal) {return null;}
+		public static Polygon createFromPoints(double[][] points, boolean shared, Plane plane) {return null;}
+		public static Polygon createFromPoints(Vector3D[] points, boolean shared, Plane plane) {return null;}
+		public static Polygon createFromPoints(Vector2D[] points, boolean shared, Plane plane) {return null;}
+		public static Polygon createFromPoints(double[][] points, boolean shared) {return null;}
+		public static Polygon createFromPoints(Vector3D[] points, boolean shared) {return null;}
+		public static Polygon createFromPoints(Vector2D[] points, boolean shared) {return null;}
 		public static boolean isConvexPoint(Vector3D prevpoint, Vector3D point, Vector3D nextpoint, Vector3D normal) {return false;}
 		public static boolean isStrictlyConvexPoint(Vector3D prevpoint, Vector3D point, Vector3D nextpoint, Vector3D normal) {return false;}
 

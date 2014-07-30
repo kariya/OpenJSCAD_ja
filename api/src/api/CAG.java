@@ -104,14 +104,15 @@ public class CAG extends AddTransformationMethodsToPrototype {
 	}
 
 	public static class fuzzyCAGFactory  {
-
+		public fuzzyCAGFactory() {}
+		
+		public Vertex getVertex(Vertex sourcevertex) {return null;}
+		public Side getSide(sourceside) {return null;}
+		public CAG getCAG(CAG sourcecag) {return null;}
 	}
 
-	public static class Polygon2D  {
-
+	public static class Polygon2D  extends CAG {
+		public Polygon2D(?[] points) {}
 	}
-
-
-
 }
 

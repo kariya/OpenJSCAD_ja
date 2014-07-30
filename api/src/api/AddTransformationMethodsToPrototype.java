@@ -1,11 +1,15 @@
 package api;
 import api.CSG;
 
+/**
+ *EN Add several convenience methods to the classes that support a transform() method:
+ *JP いくつかの便利なメソッドをtransform()メソッドをサポートするクラスに追加する
+ */
 public class AddTransformationMethodsToPrototype {
-	public CSG mirrord(CSG.Plane plane) {return null;}
-	public CSG mirrordX() {return null;}
-	public CSG mirrordY() {return null;}
-	public CSG mirrordZ() {return null;}
+	public CSG mirrored(CSG.Plane plane) {return null;}
+	public CSG mirroredX() {return null;}
+	public CSG mirroredY() {return null;}
+	public CSG mirroredZ() {return null;}
 	public CSG translate(CSG.Vector3D v) {return null;}
 	public CSG translate(CSG.Vector2D v) {return null;}
 	public CSG translate(double[] v) {return null;}
