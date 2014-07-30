@@ -9,15 +9,15 @@ import api.CSG.Vector2D;
  *EN CAG: solid area geometry: like CSG but 2D
  *EN Each area consists of a number of sides
  *EN Each side is a line between 2 points
- *JP CAG: ƒ\ƒŠƒbƒh—ÌˆæŠô‰½FCSG“¯—l‚¾‚ª‚QD
- *JP Še—Ìˆæ‚Í‰(side)‚ğ‚Â
- *JP Še‰‚Í‚Q“_ŠÔ‚Ì’¼ü‚Å‚ ‚éB
+ *JP CAG: ã‚½ãƒªãƒƒãƒ‰é ˜åŸŸå¹¾ä½•ï¼šCSGåŒæ§˜ã ãŒï¼’D
+ *JP å„é ˜åŸŸã¯ç¸(side)ã‚’æŒã¤
+ *JP å„ç¸ã¯ï¼’ç‚¹é–“ã®ç›´ç·šã§ã‚ã‚‹ã€‚
  */
 public class CAG extends AddTransformationMethodsToPrototype {
 
 	/**
 	 *EN Construct a CAG from a list of `CAG.Side` instances.
-	 *JP `CAG.Side`ƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒŠƒXƒg‚©‚çCAG‚ğ\¬‚·‚éB
+	 *JP `CAG.Side`ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒªã‚¹ãƒˆã‹ã‚‰CAGã‚’æ§‹æˆã™ã‚‹ã€‚
 	 */
 	public static CAG fromSides(Side[] sides) {return null;}
 	//public static CAG fromPoints(points) {return null;}
@@ -25,8 +25,8 @@ public class CAG extends AddTransformationMethodsToPrototype {
 	/**
 	 *EN Converts a CSG to a CAG. The CSG must consist of polygons with only z coordinates +1 and -1
 	 *EN as constructed by CAG.toCSG(-1, 1). This is so we can use the 3D union(), intersect() etc
-	 *JP CSG‚ğCAG‚É•ÏŠ·‚·‚éBCSG‚ÍCAG.toCSG(-1,1)‚Åì¬‚³‚ê‚½‚æ‚¤‚ÉzÀ•W‚Ì‚İ‚ª+1‚Æ-1‚Ìƒ|ƒŠƒSƒ“‚ÉŠÜ‚Ü‚ê‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B
-	 *JP ‚±‚Ì‚±‚Æ‚Í‚RD‚Ìunion()‚âintersect()‚È‚Ç‚ğg‚¤ê‡‚à¬‚è—§‚ÂB
+	 *JP CSGã‚’CAGã«å¤‰æ›ã™ã‚‹ã€‚CSGã¯CAG.toCSG(-1,1)ã§ä½œæˆã•ã‚ŒãŸã‚ˆã†ã«zåº§æ¨™ã®ã¿ãŒ+1ã¨-1ã®ãƒãƒªã‚´ãƒ³ã«å«ã¾ã‚Œãªã‘ã‚Œã°ãªã‚‰ãªã„ã€‚
+	 *JP ã“ã®ã“ã¨ã¯ï¼“Dã®union()ã‚„intersect()ãªã©ã‚’ä½¿ã†å ´åˆã‚‚æˆã‚Šç«‹ã¤ã€‚
 	 */
 	public static CAG fromFakeCSG(CSG csg) {return null;}
 	//public static boolean linesIntersect(p0start, p0end, p1start, p1end) {return null;}
@@ -37,12 +37,12 @@ public class CAG extends AddTransformationMethodsToPrototype {
 	 *EN	 radius: a scalar
 	 *EN	 resolution: number of sides per 360 degree rotation
 	 *EN   returns a CAG object
-	 *JP ‰~‚ğ\¬‚·‚éF
-	 *JP   ƒIƒvƒVƒ‡ƒ“:
-	 *JP	 center: ‚QD‚Ì’†S“_
-	 *JP	 radius: ƒXƒJƒ‰[’l
-	 *JP	 resolution: ‚R‚U‚O“x‰ñ“]‚ ‚½‚è‚Ì‰‚Ì”
-	 *JP  CAGƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·
+	 *JP å††ã‚’æ§‹æˆã™ã‚‹ï¼š
+	 *JP   ã‚ªãƒ—ã‚·ãƒ§ãƒ³:
+	 *JP	 center: ï¼’Dã®ä¸­å¿ƒç‚¹
+	 *JP	 radius: ã‚¹ã‚«ãƒ©ãƒ¼å€¤
+	 *JP	 resolution: ï¼“ï¼–ï¼åº¦å›è»¢ã‚ãŸã‚Šã®ç¸ã®æ•°
+	 *JP  CAGã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™
 	 */
 	public static CAG circle(Object options) {return null; }
 	/**
@@ -51,11 +51,11 @@ public class CAG extends AddTransformationMethodsToPrototype {
 	 *EN	 center: a 2D center point
 	 *EN	 radius: a 2D vector with width and height
 	 *EN   returns a CAG object
-	 *JP ’·•ûŒ`‚ğ\¬‚·‚éF
-	 *JP   ƒIƒvƒVƒ‡ƒ“:
-	 *JP	 center: ‚QD‚Ì’†S“_
-	 *JP	 radius: •‚Æ‚‚³‚©‚ç‚È‚é‚QDƒxƒNƒgƒ‹
-	 *JP  CAGƒIƒuƒWƒFƒNƒg‚ğ•Ô‚·
+	 *JP é•·æ–¹å½¢ã‚’æ§‹æˆã™ã‚‹ï¼š
+	 *JP   ã‚ªãƒ—ã‚·ãƒ§ãƒ³:
+	 *JP	 center: ï¼’Dã®ä¸­å¿ƒç‚¹
+	 *JP	 radius: å¹…ã¨é«˜ã•ã‹ã‚‰ãªã‚‹ï¼’Dãƒ™ã‚¯ãƒˆãƒ«
+	 *JP  CAGã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã™
 	 */
 	public static CAG rectangle(Object options) {return null; }
 	public static CAG roundedRectangle (Object options) {return null; }
