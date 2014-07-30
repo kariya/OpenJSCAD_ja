@@ -463,8 +463,8 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 		public String toAMFString() {return null;}
 		public String toString() {return null;}
 		/**
-		 * EN find a vector that is somewhat perpendicular to this one
-		 * JP 本ベクトルに何かしら垂直なベクトルを見つける
+		 *EN find a vector that is somewhat perpendicular to this one
+		 *JP 本ベクトルに何かしら垂直なベクトルを見つける
 		 */
 		public Vector3D randomNonParallelVector() {return null;}
 		public Vector3D min() {return null;}
