@@ -16,5 +16,5 @@ done
 cd ../..
 
 JAVADOC=/cygdrive/c/Program\ Files/Java/jdk1.7.0_45/bin/javadoc
-"$JAVADOC" -encoding "utf-8" -charset "utf-8" -d htmp_jp -sourcepath src api_jp
-"$JAVADOC" -locale en_US -encoding "utf-8" -charset "utf-8" -d htmp_en -sourcepath src api_en
+"$JAVADOC" -encoding "utf-8" -charset "utf-8" -d html_jp -sourcepath src api_jp
+"$JAVADOC" -locale en_US -encoding "utf-8" -charset "utf-8" -d html_en -sourcepath src api_en
