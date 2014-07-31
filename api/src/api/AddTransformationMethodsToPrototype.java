@@ -3,7 +3,7 @@ import api.CSG;
 
 /**
  *EN Add several convenience methods to the classes that support a transform() method:
- *JP ‚¢‚­‚Â‚©‚Ì•Ö—˜‚Èƒƒ\ƒbƒh‚ðtransform()ƒƒ\ƒbƒh‚ðƒTƒ|[ƒg‚·‚éƒNƒ‰ƒX‚É’Ç‰Á‚·‚é
+ *JP ã„ãã¤ã‹ã®ä¾¿åˆ©ãªãƒ¡ã‚½ãƒƒãƒ‰ã‚’transform()ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ã‚¯ãƒ©ã‚¹ã«è¿½åŠ ã™ã‚‹
  */
 public class AddTransformationMethodsToPrototype {
 	public CSG mirrored(CSG.Plane plane) {return null;}

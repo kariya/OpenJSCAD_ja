@@ -111,11 +111,7 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	public String toAMFString() {return null;}
 
 	public Object /*Blob*/ toX3D() {return null;}
-	/**
-	 *EN @see http://en.wikipedia.org/wiki/STL_%28file_format%29#Binary_STL
-	 *JP @see http://en.wikipedia.org/wiki/STL_%28file_format%29#Binary_STL
-	 */
-	public Object /*Blob*/ toStlBinary() {return null;}
+	//public Object /*Blob*/ toStlBinary() {return null;}
 	/**
 	 *EN @see http://en.wikipedia.org/wiki/STL_%28file_format%29#Binary_STL
 	 *JP @see http://en.wikipedia.org/wiki/STL_%28file_format%29#Binary_STL
@@ -575,8 +571,8 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 		 *JP 以下のオブジェクトを返す:
 		 *JP <pre>
 		 *JP .type:
-		 *JP   0: 共角-前面
-		 *JP   1: 共角-背面
+		 *JP   0: 平滑-前面
+		 *JP   1: 平滑-背面
 		 *JP   2: 前面
 		 *JP   3: 背面
 		 *JP   4: spanning
@@ -623,12 +619,12 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	 *EN The plane of the polygon is calculated from the vertex coordinates
 	 *EN To avoid unnecessary recalculation, the plane can alternatively be
 	 *EN passed as the third argument
-	 *JP 凸ポリゴンを表す。ポリゴンを初期化するのに使われる頂点は共角(coplanar)かつ凸なループでなければならない。
+	 *JP 凸ポリゴンを表す。ポリゴンを初期化するのに使われる頂点は平滑(coplanar)かつ凸なループでなければならない。
 	 *JP それらは`CSG.Vertex`インスタンスである必要はないが、同様に振る舞えなければならない（ダックタイピングがカスタム化のために用いられる）。
-	 *JP 
+	 *JP
 	 *JP 各凸ポリゴンは`共有`プロパティーを持つ。それは互いにクローンであるか、同じポリゴンから分割されたかのいずれかのすべてのポリゴン間で共有される。
 	 *JP これは（表面色のような）ポリゴン毎のプロパティーを定義するのに使うことができる。
-	 *JP 
+	 *JP
 	 *JP ポリゴンの平面は頂点の座標から計算される。不必要な再計算を避けるため、平面は第３引数として渡すこともできる。
 	 */
 	public static class Polygon extends AddTransformationMethodsToPrototype {
@@ -686,7 +682,7 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 		public CSG solidFromSlices(Object options) {return null;}
 		public CSG _addWalls(Polygon[] walls, Polygon bottom, Polygon top, boolean bFlipped) {return null;}
 
-		public static boolean verticesConvex(Vertex[] vertices, ? planenormal) {return null;}
+		//public static boolean verticesConvex(Vertex[] vertices, ? planenormal) {return null;}
 		public static Polygon createFromPoints(double[][] points, boolean shared, Plane plane) {return null;}
 		public static Polygon createFromPoints(Vector3D[] points, boolean shared, Plane plane) {return null;}
 		public static Polygon createFromPoints(Vector2D[] points, boolean shared, Plane plane) {return null;}
