@@ -571,8 +571,8 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 		 *JP 以下のオブジェクトを返す:
 		 *JP <pre>
 		 *JP .type:
-		 *JP   0: 共角-前面
-		 *JP   1: 共角-背面
+		 *JP   0: 平滑-前面
+		 *JP   1: 平滑-背面
 		 *JP   2: 前面
 		 *JP   3: 背面
 		 *JP   4: spanning
@@ -619,7 +619,7 @@ public abstract class CSG extends AddTransformationMethodsToPrototype {
 	 *EN The plane of the polygon is calculated from the vertex coordinates
 	 *EN To avoid unnecessary recalculation, the plane can alternatively be
 	 *EN passed as the third argument
-	 *JP 凸ポリゴンを表す。ポリゴンを初期化するのに使われる頂点は共角(coplanar)かつ凸なループでなければならない。
+	 *JP 凸ポリゴンを表す。ポリゴンを初期化するのに使われる頂点は平滑(coplanar)かつ凸なループでなければならない。
 	 *JP それらは`CSG.Vertex`インスタンスである必要はないが、同様に振る舞えなければならない（ダックタイピングがカスタム化のために用いられる）。
 	 *JP
 	 *JP 各凸ポリゴンは`共有`プロパティーを持つ。それは互いにクローンであるか、同じポリゴンから分割されたかのいずれかのすべてのポリゴン間で共有される。
