@@ -6,5 +6,5 @@ Currently it contains:
 - boltAndKnot.jscad: bolt and knot generator.
 - utils.jscad: misc utility functions.
 - parser.jscad: experimental solid parser.
-
+- Japanese-traditional-wood-joint/ : literally
 
