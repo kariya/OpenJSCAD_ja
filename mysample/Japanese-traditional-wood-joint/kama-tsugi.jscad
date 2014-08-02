@@ -6,7 +6,7 @@
 function kama_ogi() {
     var kama = union(
         new CAG.fromPoints([
-			[0, -0.5],
+    		[0, -0.5],
 			[-2, -0.5],
 			[-2, -0.8],
 			[-4, -0.5],
@@ -15,23 +15,24 @@ function kama_ogi() {
 			[-2, 0.5],
 			[0, 0.5]
 		])
-		.extrude({offset:[0, 0, 1.5]}),
+		.extrude({offset:[0, 0, 3]})
+        .translate([0.5,0,-1.5]),
 		new CAG.fromPoints([
-			[0.5, -0.5],
+			[1, -0.5],
 			[0, -0.5],
 			[0, 0.5],
-			[0.5, 0.5]
+			[1, 0.5]
 		])
-		.extrude({offset:[0, 0, 3]})
-		.translate([0, 0, -1.5])
+		.extrude({offset:[0, 0, 6]})
+		.translate([0.5, 0, -4.5])
 	)
     .translate([0, 0, 4.5]);
 	
 	return new CSG.cube({radius: [6, 3, 1.5]})
         .translate([6.5, 0, 4.5])
         .union(
-			new CSG.cube({radius: [6.5, 3, 1.5]})
-			.translate([6, 0, 1.5])
+			new CSG.cube({radius: [5.5, 3, 1.5]})
+			.translate([7, 0, 1.5])
 		)
 		.union(kama);
 }
