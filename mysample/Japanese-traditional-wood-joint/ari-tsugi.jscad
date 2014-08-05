@@ -41,13 +41,19 @@ function loop(n) {
     }
 }
 
-function main() {
-	var animation = true;
-	var jointed = true;
+function getParameterDefinitions() {
+	return [
+		{name: 'kind', type: 'choice', caption: '', values: [0, 1, 2], captions: ['animation', 'static(jointed)', 'static(separate)'], initial: 0},
+	];
+}
+
+function main(params) {
+	var animation = (params.kind == 0);
+	var jointed = (params.kind != 0) && (params.kind == 1);
 
 	if (animation) {
 		loop(10);		
-		return cuber().scale([.1,.1,.1]);
+		return cube().scale([.1,.1,.1]);
 	} else {
 	
 		if (jointed) {
