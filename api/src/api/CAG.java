@@ -35,7 +35,7 @@ public class CAG extends AddTransformationMethodsToPrototype {
 	 *JP CAG.fromPoints と同様であるが、妥当なポリゴンであるかのチェックをしない。
 	 *JP 点は反時計回りでなければならない。
 	 */
-	public static CAG fromPointsNoCheck(Vectro2D[] points) {return null;}
+	public static CAG fromPointsNoCheck(Vector2D[] points) {return null;}
 	/**
 	 *EN Converts a CSG to a CAG. The CSG must consist of polygons with only z coordinates +1 and -1
 	 *EN as constructed by CAG.toCSG(-1, 1). This is so we can use the 3D union(), intersect() etc
@@ -49,7 +49,7 @@ public class CAG extends AddTransformationMethodsToPrototype {
 	 *JP p0startとp0endの間の直線がp1startとp1endの間の直線と交わるかを調べる。
 	 *JP 直線が厳密に交わるなら真を返す、端点は含まれない！
 	 */
-	public static boolean linesIntersect(Vector2D p0start, Vector2D p0end, Vector2D p1start, Vector2D p1end) {return null;}
+	public static boolean linesIntersect(Vector2D p0start, Vector2D p0end, Vector2D p1start, Vector2D p1end) {return false;}
 	/**
 	 *EN Construct a circle
 	 *EN <pre>
@@ -195,7 +195,7 @@ public class CAG extends AddTransformationMethodsToPrototype {
 	 *JP しかしCSG.Polyugon2Dは後方互換性のためスタブとして維持される。
 	 */
 	public static class Polygon2D  extends CAG {
-		public Polygon2D(Vector2D[] points) {return null;}
+		public Polygon2D(Vector2D[] points) {}
 	}
 }
 
