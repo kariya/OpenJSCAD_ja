@@ -5,18 +5,18 @@
 
 // ogi means male wood
 function ari_ogi() {
-    var ari = CAG.fromPoints([
-    	[0, -0.5],
+	var ari = CAG.fromPoints([
+		[0, -0.5],
 		[-1, -0.75],
 		[-1, 0.75],
 		[0,0.5]
 	])
-    .extrude({offset: [0, 0, 3]})
-    .translate([0,0,3]);	
+	.extrude({offset: [0, 0, 3]})
+	.translate([0,0,3]);	
 	
 	return CSG.cube({radius:1}).scale([6,3,1.5]).translate([6,0,4.5]).union([
 		new CSG.cube({radius: 1}).scale([6.5,3,1.5]).translate([5.5,0,1.5]),
-        ari
+		ari
 	]);
 }
 
@@ -27,18 +27,18 @@ function ari_megi() {
 }
 
 function joint(l) {
-    return union(
-            ari_ogi().setColor(1,0,0),
-            ari_megi().setColor(0,1,0).translate([-l/4,0,l])
-    );
+	return union(
+		ari_ogi().setColor(1,0,0),
+		ari_megi().setColor(0,1,0).translate([0,0,l])
+	);
 
 }
 
 function loop(n) {
-    if (n >= 0) {
-        self.postMessage({cmd:'rendered', result: joint(n % 10).toCompactBinary()});
-        setTimeout(function() {loop(n - 1);}, 1000);
-    }
+	if (n >= 0) {
+		self.postMessage({cmd:'rendered', result: joint(n % 10).toCompactBinary()});
+		setTimeout(function() {loop(n - 1);}, 1000);
+	}
 }
 
 function getParameterDefinitions() {
