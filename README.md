@@ -7,4 +7,6 @@ Currently it contains:
 - utils.jscad: misc utility functions.
 - parser.jscad: experimental solid parser.
 - Japanese-traditional-wood-joint/ : literally
+- clock_animation.jscad: simple clock animation
+- puzzle.jscad: enjoy!
 
