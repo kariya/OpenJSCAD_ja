@@ -1,4 +1,4 @@
-// bolt and knot generator
+// bolt and nut generator
 
 function bolt(params, num) {
     var thread = CSG.Polygon.createFromPoints([
@@ -35,7 +35,7 @@ function bolt(params, num) {
 	return helical.union(tube).union(boltHead).translate([0,0,params.P*2]);
 }
 
-function knot(params, num) {
+function nut(params, num) {
 	var thread = CSG.Polygon.createFromPoints([
 		[(params.D2-params.H)/2 + (params.H-params.D2+params.D1)/2,	 (params.H-params.D +params.D2)/4, 0],
 		[(params.D2-params.H)/2 + (params.H+params.D -params.D2)/2,	 (params.H+params.D2-params.D1)/4, 0],
@@ -76,17 +76,17 @@ function main()
 	};
 	params.H = params.P / 2 * Math.sqrt(3);
 
-    var knot1 = knot(params, 4);
+    var nut1 = nut(params, 4);
 
 	return [
         bolt(params,10)   .translate([65,  0, 0]),
-        knot1.scale(1.0  ).translate([ 0,  0, 0]), // x
-        knot1.scale(1.025).translate([30,  0, 0]), // x
-        knot1.scale(1.05 ).translate([ 0, 30, 0]), // ok
-        knot1.scale(1.075).translate([30, 30, 0]), // ok
-        knot1.scale(1.1  ).translate([60, 30, 0]), // ok
-        knot1.scale(1.125).translate([ 0, 60, 0]), // ok
-        knot1.scale(1.15 ).translate([30, 60, 0]), // x
-        knot1.scale(1.175).translate([60, 60, 0])  // x
+        nut1.scale(1.0  ).translate([ 0,  0, 0]), // x
+        nut1.scale(1.025).translate([30,  0, 0]), // x
+        nut1.scale(1.05 ).translate([ 0, 30, 0]), // ok
+        nut1.scale(1.075).translate([30, 30, 0]), // ok
+        nut1.scale(1.1  ).translate([60, 30, 0]), // ok
+        nut1.scale(1.125).translate([ 0, 60, 0]), // ok
+        nut1.scale(1.15 ).translate([30, 60, 0]), // x
+        nut1.scale(1.175).translate([60, 60, 0])  // x
     ];
 }
