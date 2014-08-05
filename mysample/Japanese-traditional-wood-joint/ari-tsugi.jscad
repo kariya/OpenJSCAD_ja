@@ -26,20 +26,43 @@ function ari_megi() {
 	.subtract(ari_ogi());
 }
 
+function joint(l) {
+    return union(
+            ari_ogi().setColor(1,0,0),
+            ari_megi().setColor(0,1,0).translate([-l/4,0,l])
+    );
+
+}
+
+function loop(n) {
+    if (n >= 0) {
+        self.postMessage({cmd:'rendered', result: joint(n % 10).toCompactBinary()});
+        setTimeout(function() {loop(n - 1);}, 1000);
+    }
+}
+
 function main() {
+	var animation = true;
 	var jointed = true;
-	
-	if (jointed) {
-		// jointed form
-		return [
-			ari_ogi().setColor(1,0,0),
-			ari_megi().setColor(0,1,0)
-		];
+
+	if (animation) {
+		loop(10);		
+		return cuber().scale([.1,.1,.1]);
 	} else {
-		// separate form (printable)
-		return [
-			ari_ogi().setColor(1,0,0),
-			ari_megi().setColor(0,1,0).translate([12,7,0])
-		];
+	
+		if (jointed) {
+			// jointed form
+			return [
+				ari_ogi().setColor(1,0,0),
+				ari_megi().setColor(0,1,0)
+			];
+		} else {
+			// separate form (printable)
+			return [
+				ari_ogi().setColor(1,0,0),
+				ari_megi().setColor(0,1,0).translate([12,7,0])
+			];
+		}
 	}
 }
+
