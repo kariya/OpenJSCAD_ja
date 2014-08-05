@@ -1,3 +1,6 @@
+// clock animation
+// Press F5 to stop animation
+
 function clock(hour, minute, second) {
     var t = second + 60 * (minute + 60 * hour); 
     var h = cylinder({r:0.3,h:4}).setColor(1,0,0).rotateX(-t/60/60/12*360);
