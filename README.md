@@ -8,7 +8,7 @@ Currently it contains:
 - parser.jscad: experimental solid parser.
 - Japanese-traditional-wood-joint/ : literally
 - animation/ : literally
-1 clock_animation.jscad: simple clock animation
-2 puzzle.jscad: enjoy!
-3 gear.jscad: rotating 3 gears!
+- 1 clock_animation.jscad: simple clock animation
+- 2 puzzle.jscad: enjoy!
+- 3 gear.jscad: rotating 3 gears!
 
