@@ -3,7 +3,7 @@
 function tCutter() {
     return linear_extrude({height: 4},
                 polygon([
-        			[-1/2, 0],
+                    [-1/2, 0],
 					[1/2, 0],
 					[0, 3]]));
 }
@@ -55,7 +55,7 @@ function loop1(n, cb) {
     }
 }
 
-// ansert animation
+// answer animation
 function loop2(n, cb) {
 	if (n >= 0) {
 		render(animation(n).union(mes2));
@@ -66,50 +66,99 @@ function loop2(n, cb) {
 }
 
 function main() {
-	mes1 = show("How to unjoint this?\nseems impossible?");
-    mes2 = show("Now the answer!");
+	mes1 = messageBoard("How to unjoint this?\nSeems impossible?");
+    mes2 = messageBoard("Now the answer!");
 
     setTimeout(function () {
         loop1(0, function () {
             loop2(0.9, function () {
             });});
     }, 3000);
-    
+  
 	return mes1;
 }
 
-function show(msg) {
-    var t = vector_text(0,0,msg);
-	var o = [];
-
-	t.forEach(function(s) {
-		o.push(rectangular_extrude(s, {w:2, h:3}));
-	});
-	var text = o[0];
-	for (var i = 1; i < o.length; ++i)
-		text = text.unionForNonIntersecting(o[i]);
-	
-	text = text.scale([0.1,0.1,0.1]).setColor(0.9,0.9,0.9);
-	var minP = text.getBounds()[0];
-	var maxP = text.getBounds()[1];
-	var frame = CAG.roundedRectangle({
-		center: [(minP.x + maxP.x) / 2, (minP.y + maxP.y) / 2],
-		radius: [(maxP.x - minP.x) / 2 * 1.25, (maxP.y - minP.y) / 2 * 1.25],
-		roundradius: 0.25
-	}).extrude({offset: [0,0,2]})
-	.subtract(
-		CAG.rectangle({
-			center: [(minP.x + maxP.x) / 2, (minP.y + maxP.y) / 2],
-			radius: [(maxP.x - minP.x) / 2 * 1.1, (maxP.y - minP.y) / 2]
-		})
-		.extrude({offset: [0,0,2]})
-        .translate([0,0,0.1])
-	)
-	.scale([1,1,0.05])
-	.setColor(0,0,0);
-	
-	return union(text, frame)
+function messageBoard(msg) {
+	return with_frame(1,1,1, text(1, 1, msg))
+    .scale([0.1,0.1,1])
+    .rotateX(60)
     .rotateZ(45)
-    .translate([0,10,2])
-    .scale([0.7,0.7,1]);
+    .translate([5,2,0])
+    .setColor(0,0,0);
 }
+
+function unionsForNonIntersecting(objs) {
+	var buf = new CSG();
+	for (var i = 0; i < objs.length; ++i) {
+		buf = buf.unionForNonIntersecting(objs[i]);
+	}
+	return buf;
+}
+
+function text(w, h, msg) {
+	return my_vector_text(0, 0, msg, function (seg) {
+		return new CSG.Path2D(seg).rectangularExtrude(w, h, 16);
+	});
+}
+
+function my_vector_text(x, y, s, csgBuilder) {
+	var buf = [];
+	var cache = new Array(128-32);
+	
+	var x0 = x;
+	for (var i = 0; i < s.length; i++) {
+		var c = s.charAt(i);
+		var cc = s.charCodeAt(i) - 32;
+		if(c == '\n') {
+			x = x0; 
+			y -= 30;
+		} else {
+			var ch = vector_char(0,0,c);
+			var csgs = null;
+			if (cache[cc] != null) csgs = cache[cc];
+			else {
+				csgs = ch.segments.map(function (seg) { return csgBuilder(seg); });
+				cache[cc] = csgs;
+			}
+			csgs.forEach(function (csg) { buf.push(csg.translate([x,y,0])); });
+			x += ch.width;
+		}
+   }
+   return unionsForNonIntersecting(buf);
+}
+
+function with_frame(w, h, d, obj) {
+	var bounds = obj.getBounds();
+	var minX = bounds[0].x - w * 2;
+	var minY = bounds[0].y + h * 2;
+	var maxX = bounds[1].x + w * 2;
+	var maxY = bounds[1].y + w * 2;
+	
+	var frame_top = linear_extrude({height: d}, CAG.fromPoints([
+		[minX - w, minY - h],
+		[maxX,     minY - h],
+		[maxX,     minY    ],
+		[minX - w, minY    ]
+	]));
+	var frame_bottom = linear_extrude({height: d}, CAG.fromPoints([
+		[minX,     maxY    ],
+		[maxX + w, maxY    ],
+		[maxX + w, maxY + h],
+		[minX,     maxY + h]
+	]));
+	var frame_left = linear_extrude({height: d}, CAG.fromPoints([
+		[minX - w, minY],
+		[minX,     minY],
+		[minX,     maxY + h],
+		[minX - w, maxY + h]
+	]));
+	var frame_right = linear_extrude({height: d}, CAG.fromPoints([
+		[maxX,     minY - h],
+		[maxX + w, minY - h],
+		[maxX + w, maxY + 0],
+		[maxX,     maxY + 0]
+	]));
+	
+	return obj.union([frame_top, frame_bottom, frame_left, frame_right]);
+}
+
