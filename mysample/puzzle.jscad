@@ -85,8 +85,11 @@ function show(msg) {
 	t.forEach(function(s) {
 		o.push(rectangular_extrude(s, {w:2, h:3}));
 	});
+	var text = o[0];
+	for (var i = 1; i < o.length; ++i)
+		text = text.unionForNonIntersecting(o[i]);
 	
-	var text = union(o).scale([0.1,0.1,0.1]).setColor(0.9,0.9,0.9);
+	text = text.scale([0.1,0.1,0.1]).setColor(0.9,0.9,0.9);
 	var minP = text.getBounds()[0];
 	var maxP = text.getBounds()[1];
 	var frame = CAG.roundedRectangle({
