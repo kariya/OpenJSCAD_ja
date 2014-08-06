@@ -1,5 +1,5 @@
 // test for fast vector_text using cache
-// sorry, API has to chage(csgBuilder aprameter)
+// sorry, API has to change(csgBuilder aprameter)
 
 function main() {
 	var msg = "Long long long string\n";
@@ -11,8 +11,8 @@ function main() {
 }
 
 function unionsForNonIntersecting(objs) {
-	var buf = objs[0];
-	for (var i = 1; i < objs.length; ++i) {
+	var buf = new CSG(); // empty
+	for (var i = 0; i < objs.length; ++i) {
 			buf = buf.unionForNonIntersecting(objs[i]);
 	}
 	return buf;
