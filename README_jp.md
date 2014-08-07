@@ -20,3 +20,7 @@ Kindle書籍の「計算機言語で形を造る：OpenSCAD Scripting Manual」�
 
 「四方蟻」を追加、パズルバージョンもあります。
 
+youtubeにアニメーションの動画を登録しました。OpenJSCADの使い方がわからなくて自分で試せない方は見てみてください。
+https://www.youtube.com/watch?v=f1BI2XxWsZo
+https://www.youtube.com/watch?v=8OAlsfviXxE
+

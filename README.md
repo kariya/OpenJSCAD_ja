@@ -12,3 +12,8 @@ Currently it contains:
 - 2 puzzle.jscad: enjoy!
 - 3 gear.jscad: rotating 3 gears!
 
+
+Animation movies are on youtube:
+https://www.youtube.com/watch?v=f1BI2XxWsZo
+https://www.youtube.com/watch?v=8OAlsfviXxE
+
