@@ -23,9 +23,4 @@ function spring(r, p, num, w) {
             .translate([r * cos(num * 360 * t), r * sin(num * 360 * t), num * t * p]);
         }
     });
-    
-    var buf = [];
-    for (var i = 0; i < num; i++) {
-        buf.push(spring1.translate([0, 0, i * 1.8]));
-    }
 }
