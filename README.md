@@ -15,7 +15,7 @@ Currently it contains:
 
 Animation movies are on youtube:
 - https://www.youtube.com/watch?v=f1BI2XxWsZo
--hhttps://www.youtube.com/watch?v=8OAlsfviXxE
+- https://www.youtube.com/watch?v=8OAlsfviXxE
 
 I added wiki pages, currently tips pages(English and Japanese).
 
