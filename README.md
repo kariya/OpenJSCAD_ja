@@ -1,7 +1,8 @@
 This is a Japanese translation of OpenJSCAD documents.
+
 I also made a javadoc document of csg.js API.
 
-Also I use this repo to store my sample jscad codes.
+In addition I use this repo to store my sample jscad codes.
 Currently it contains:
 - boltAndNut.jscad: bolt and nut generator.
 - parser.jscad: experimental solid parser.
