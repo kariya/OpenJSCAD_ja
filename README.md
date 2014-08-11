@@ -1,6 +1,10 @@
 This is a Japanese translation of OpenJSCAD documents.
 
 I also made a javadoc document of csg.js API.
+See api/.
+Online version is 
+- http://kariya.cc/api/html_en/
+- http://kariya.cc/api/html_jp/
 
 In addition I use this repo to store my sample jscad codes.
 Currently it contains:

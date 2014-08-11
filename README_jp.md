@@ -30,7 +30,11 @@ OpenJSCADのドキュメントの和訳と自作のサンプルの置き場で�
 
 - API(javadoc)
 
-  - Javadocでcsg.jsのAPIをまとめてみました。日本語訳もあります。
+  - Javadocでcsg.jsのAPIをまとめてみました。日本語訳もあります。 api/ です。
+
+  - オンラインバージョン：
+    - http://kariya.cc/api/html_en/
+    - http://kariya.cc/api/html_jp/
 
 - wiki
 
