@@ -1,5 +1,6 @@
 OpenJSCADのドキュメントの和訳と自作のサンプルの置き場です。
 
+- 翻訳について
 solidの訳語がよくわからなかったので「ソリッド」としています。中身の詰まった立体のことです。（追記：一般的な用語のようです）
 
 サンプルコード中のコメント文は訳していません。今後必要に応じて順次訳してきます。
@@ -8,6 +9,7 @@ object はJavascriptのオブジェクトの意味と物体の意味で使われ
 
 resolutionは「分解度」としました。分解能か解像度が一般的な語でしょうが、しっくりこなかったので。
 
+- 自作サンプル
 自作のサンプルを置いてみました。/mysample ディレクトリです。
 現在は、ボルトとナットの例だけです。
 
@@ -21,6 +23,9 @@ Kindle書籍の「計算機言語で形を造る：OpenSCAD Scripting Manual」�
 「四方蟻」を追加、パズルバージョンもあります。
 
 youtubeにアニメーションの動画を登録しました。OpenJSCADの使い方がわからなくて自分で試せない方は見てみてください。
-https://www.youtube.com/watch?v=f1BI2XxWsZo
-https://www.youtube.com/watch?v=8OAlsfviXxE
+  - https://www.youtube.com/watch?v=f1BI2XxWsZo
+  - https://www.youtube.com/watch?v=8OAlsfviXxE
+
+- wiki
+Tipsのページがあります。
 
